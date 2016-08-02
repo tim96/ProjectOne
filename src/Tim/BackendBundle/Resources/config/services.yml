@@ -1,0 +1,4 @@
+services:
+#    tim_backend.example:
+#        class: Tim\BackendBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]

@@ -22,11 +22,11 @@ class AppKernel extends Kernel
         }
 
         if (in_array($this->getEnvironment(), array('backend', 'dev'), true)) {
-
+            $bundles[] = new Tim\BackendBundle\TimBackendBundle();
         }
 
         if (in_array($this->getEnvironment(), array('api', 'dev'), true)) {
-
+            $bundles[] = new Tim\ApiBundle\TimApiBundle();
         }
 
         $bundles[] = new Tim\DataBundle\TimDataBundle();

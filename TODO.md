@@ -7,5 +7,5 @@ TODO:
 - [X] Delete AppBundle
 - [X] Create FrontendBundle
 - [X] Create DataBundle
-- [ ] Create BackendBundle
-- [ ] Create ApiBundle
+- [X] Create BackendBundle
+- [X] Create ApiBundle

@@ -1,3 +1,11 @@
+tim_api:
+    resource: "@TimApiBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tim_backend:
+    resource: "@TimBackendBundle/Resources/config/routing.yml"
+    prefix:   /
+
 tim_frontend:
     resource: "@TimFrontendBundle/Resources/config/routing.yml"
     prefix:   /
