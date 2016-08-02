@@ -17,6 +17,18 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
         );
 
+        if (in_array($this->getEnvironment(), array('prod'), true)) {
+
+        }
+
+        if (in_array($this->getEnvironment(), array('backend'), true)) {
+
+        }
+
+        if (in_array($this->getEnvironment(), array('api'), true)) {
+
+        }
+
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
