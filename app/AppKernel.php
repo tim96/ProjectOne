@@ -29,6 +29,8 @@ class AppKernel extends Kernel
 
         }
 
+        $bundles[] = new Tim\DataBundle\TimDataBundle();
+
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();

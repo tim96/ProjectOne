@@ -1,4 +1,3 @@
 tim_frontend:
     resource: "@TimFrontendBundle/Resources/config/routing.yml"
     prefix:   /
-

@@ -6,6 +6,6 @@ TODO:
 - [X] Create new environments: api, front, admin
 - [X] Delete AppBundle
 - [X] Create FrontendBundle
-- [ ] Create DataBundle
+- [X] Create DataBundle
 - [ ] Create BackendBundle
 - [ ] Create ApiBundle
