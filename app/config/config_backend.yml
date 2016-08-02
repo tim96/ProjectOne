@@ -1,5 +1,10 @@
 imports:
-    - { resource: config.yml }
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+    - { resource: framework.yml }
+    - { resource: twig.yml }
+    - { resource: doctrine.yml }
 
 #framework:
 #    validation:
