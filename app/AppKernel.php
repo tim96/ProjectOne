@@ -17,15 +17,15 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
         );
 
-        if (in_array($this->getEnvironment(), array('prod'), true)) {
+        if (in_array($this->getEnvironment(), array('prod', 'dev'), true)) {
+            $bundles[] = new Tim\FrontendBundle\TimFrontendBundle();
+        }
+
+        if (in_array($this->getEnvironment(), array('backend', 'dev'), true)) {
 
         }
 
-        if (in_array($this->getEnvironment(), array('backend'), true)) {
-
-        }
-
-        if (in_array($this->getEnvironment(), array('api'), true)) {
+        if (in_array($this->getEnvironment(), array('api', 'dev'), true)) {
 
         }
 
