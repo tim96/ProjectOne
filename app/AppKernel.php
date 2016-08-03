@@ -23,6 +23,13 @@ class AppKernel extends Kernel
 
         if (in_array($this->getEnvironment(), array('backend', 'dev'), true)) {
             $bundles[] = new Tim\BackendBundle\TimBackendBundle();
+            $bundles[] = new Sonata\CoreBundle\SonataCoreBundle();
+            $bundles[] = new Sonata\BlockBundle\SonataBlockBundle();
+            $bundles[] = new Knp\Bundle\MenuBundle\KnpMenuBundle();
+            $bundles[] = new Sonata\DoctrineORMAdminBundle\SonataDoctrineORMAdminBundle();
+            $bundles[] = new Sonata\AdminBundle\SonataAdminBundle();
+            $bundles[] = new FOS\UserBundle\FOSUserBundle();
+            $bundles[] = new Sonata\UserBundle\SonataUserBundle('FOSUserBundle');
         }
 
         if (in_array($this->getEnvironment(), array('api', 'dev'), true)) {
@@ -31,11 +38,12 @@ class AppKernel extends Kernel
 
         $bundles[] = new Tim\DataBundle\TimDataBundle();
 
-        if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
+        if (in_array($this->getEnvironment(), array('dev', 'backend', 'test'), true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();
             $bundles[] = new Sensio\Bundle\GeneratorBundle\SensioGeneratorBundle();
+            $bundles[] = new Sonata\EasyExtendsBundle\SonataEasyExtendsBundle();
         }
 
         return $bundles;

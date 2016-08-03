@@ -1,10 +1,22 @@
 imports:
     - { resource: parameters.yml }
-    - { resource: security.yml }
+    - { resource: security_backend.yml }
     - { resource: services.yml }
     - { resource: framework.yml }
     - { resource: twig.yml }
     - { resource: doctrine.yml }
+    - { resource: sonata.yml }
+    - { resource: fos.yml }
+
+framework:
+    router:
+        resource: "%kernel.root_dir%/config/routing_backend.yml"
+        strict_requirements: true
+    profiler: { only_exceptions: false }
+
+web_profiler:
+    toolbar: true
+    intercept_redirects: false
 
 #framework:
 #    validation:
