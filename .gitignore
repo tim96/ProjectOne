@@ -49,3 +49,4 @@
 */Entity/*~
 composer.lock
 .idea/
+*.php~
