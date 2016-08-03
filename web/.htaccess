@@ -20,6 +20,11 @@ DirectoryIndex app.php
 <IfModule mod_rewrite.c>
     RewriteEngine On
 
+    # Handle requests for "admin"
+    # RewriteCond %{REQUEST_URI} ^/admin [NC]
+    # RewriteRule ^admin$ app_backend.php/admin/dashboard [NC,L]
+    RewriteRule ^admin/.*$ app_backend.php$1 [NC,L]
+
     # Determine the RewriteBase automatically and set it as environment variable.
     # If you are using Apache aliases to do mass virtual hosting or installed the
     # project in a subdirectory, the base path will be prepended to allow proper
