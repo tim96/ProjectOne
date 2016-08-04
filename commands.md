@@ -21,3 +21,7 @@ php app/console doctrine:generate:entity --entity Group
 7. Get all routes in project:
 php app/console router:debug > router.log
 
+8. Generate methods in entity class
+php app/console doctrine:generate:entities TimDataBundle
+
+
