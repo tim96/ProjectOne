@@ -28,3 +28,7 @@ php app/console doctrine:generate:entities TimDataBundle
 php app/console doctrine:schema:update --force --dump-sql
 php app/console doctrine:schema:update --force --dump-sql > migration.log
 
+10. Load Fixtures Data
+php app/console doctrine:fixtures:load --append
+In our case we will using `backend` environment
+php app/console doctrine:fixtures:load --append --env backend
