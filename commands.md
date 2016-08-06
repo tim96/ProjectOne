@@ -24,4 +24,7 @@ php app/console router:debug > router.log
 8. Generate methods in entity class
 php app/console doctrine:generate:entities TimDataBundle
 
+9. Update database schema
+php app/console doctrine:schema:update --force --dump-sql
+php app/console doctrine:schema:update --force --dump-sql > migration.log
 
