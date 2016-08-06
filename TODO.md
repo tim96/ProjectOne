@@ -10,7 +10,9 @@ TODO:
 - [X] Create BackendBundle
 - [X] Create ApiBundle
 - [X] Add auth for backend
-- [ ] Create fixture file with user
+- [X] Create fixture file with user
+- [ ] Add fields: browser, ip, count login attempt to Backend User entity
+- [ ] Add funtion to save count attempt and login pause
 - [ ] Check users screen
 - [ ] Add log table. Log all errors
 - [ ] Add bower and gulp in project

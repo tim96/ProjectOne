@@ -1,3 +1,7 @@
+parameters:
+    security.authentication.success_handler.class: Tim\BackendBundle\Handler\AuthenticationSuccessHandler
+    security.authentication.failure_handler.class: Tim\BackendBundle\Handler\AuthenticationFailureHandler
+
 services:
 #    tim_backend.example:
 #        class: Tim\BackendBundle\Example
