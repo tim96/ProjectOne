@@ -11,8 +11,8 @@ TODO:
 - [X] Create ApiBundle
 - [X] Add auth for backend
 - [X] Create fixture file with user
-- [ ] Add fields: browser, ip, count login attempt to Backend User entity
-- [ ] Add funtion to save count attempt and login pause
+- [X] Add fields: browser, ip, count login attempt to Backend User entity
+- [ ] Add function to save count attempt and login pause
 - [ ] Check users screen
 - [ ] Add log table. Log all errors
 - [ ] Add bower and gulp in project
