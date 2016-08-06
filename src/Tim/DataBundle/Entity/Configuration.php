@@ -107,6 +107,56 @@ class Configuration
      */
     protected $emailAuth;
 
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     *
+     * @ORM\Column(name="prod_email_login", type="string", length=255)
+     */
+    protected $prodEmailLogin;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     *
+     * @ORM\Column(name="prod_email_password", type="string", length=255)
+     */
+    protected $prodEmailPassword;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     *
+     * @ORM\Column(name="prod_email_server", type="string", length=255)
+     */
+    protected $prodEmailServer;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     *
+     * @ORM\Column(name="prod_email_port", type="string", length=255)
+     */
+    protected $prodEmailPort;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotBlank()
+     * @Assert\NotNull()
+     *
+     * @ORM\Column(name="prod_email_auth", type="string", length=255)
+     */
+    protected $prodEmailAuth;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -359,5 +409,120 @@ class Configuration
     public function getEmailAuth()
     {
         return $this->emailAuth;
+    }
+
+    /**
+     * Set prodEmailLogin
+     *
+     * @param string $prodEmailLogin
+     * @return Configuration
+     */
+    public function setProdEmailLogin($prodEmailLogin)
+    {
+        $this->prodEmailLogin = $prodEmailLogin;
+
+        return $this;
+    }
+
+    /**
+     * Get prodEmailLogin
+     *
+     * @return string 
+     */
+    public function getProdEmailLogin()
+    {
+        return $this->prodEmailLogin;
+    }
+
+    /**
+     * Set prodEmailPassword
+     *
+     * @param string $prodEmailPassword
+     * @return Configuration
+     */
+    public function setProdEmailPassword($prodEmailPassword)
+    {
+        $this->prodEmailPassword = $prodEmailPassword;
+
+        return $this;
+    }
+
+    /**
+     * Get prodEmailPassword
+     *
+     * @return string 
+     */
+    public function getProdEmailPassword()
+    {
+        return $this->prodEmailPassword;
+    }
+
+    /**
+     * Set prodEmailServer
+     *
+     * @param string $prodEmailServer
+     * @return Configuration
+     */
+    public function setProdEmailServer($prodEmailServer)
+    {
+        $this->prodEmailServer = $prodEmailServer;
+
+        return $this;
+    }
+
+    /**
+     * Get prodEmailServer
+     *
+     * @return string 
+     */
+    public function getProdEmailServer()
+    {
+        return $this->prodEmailServer;
+    }
+
+    /**
+     * Set prodEmailPort
+     *
+     * @param string $prodEmailPort
+     * @return Configuration
+     */
+    public function setProdEmailPort($prodEmailPort)
+    {
+        $this->prodEmailPort = $prodEmailPort;
+
+        return $this;
+    }
+
+    /**
+     * Get prodEmailPort
+     *
+     * @return string 
+     */
+    public function getProdEmailPort()
+    {
+        return $this->prodEmailPort;
+    }
+
+    /**
+     * Set prodEmailAuth
+     *
+     * @param string $prodEmailAuth
+     * @return Configuration
+     */
+    public function setProdEmailAuth($prodEmailAuth)
+    {
+        $this->prodEmailAuth = $prodEmailAuth;
+
+        return $this;
+    }
+
+    /**
+     * Get prodEmailAuth
+     *
+     * @return string 
+     */
+    public function getProdEmailAuth()
+    {
+        return $this->prodEmailAuth;
     }
 }
