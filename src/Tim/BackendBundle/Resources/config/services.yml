@@ -6,3 +6,16 @@ services:
 #    tim_backend.example:
 #        class: Tim\BackendBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+
+    tim_backend.listener.interactive_login_listener:
+        class: Tim\BackendBundle\EventListener\LoginListener
+        arguments: ['@doctrine.orm.default_entity_manager', '@request_stack']
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login, method: onAuthenticationSuccess }
+
+    # authentication failure event listener
+    tim_backend.listener.authentication_failure_event_listener:
+        class: Tim\BackendBundle\EventListener\LoginListener
+        arguments: ['@doctrine.orm.default_entity_manager', '@request_stack']
+        tags:
+            - { name: kernel.event_listener, event: security.authentication.failure, method: onAuthenticationFailure }
