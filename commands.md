@@ -39,3 +39,11 @@ npm install -g bower
 12. Install additional libraries:
 bower install jquery bootstrap fontawesome highlight Chart.js symfony-collection
 
+13. Install gulp libraries:
+npm install --global gulp
+npm install --save-dev gulp
+npm install gulp-if gulp-uglify gulp-uglifycss gulp-less gulp-concat gulp-sourcemaps
+
+14. Run all scripts fron gulpfile.js:
+gulp
+
