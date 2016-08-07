@@ -8,29 +8,27 @@
 
 namespace Tim\BackendBundle\EventListener;
 
-use Doctrine\ORM\EntityManager;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\AuthenticationEvents;
 use Symfony\Component\Security\Core\Event\AuthenticationFailureEvent;
 use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Tim\BackendBundle\Entity\User;
+use Tim\BackendBundle\Service\UserService;
 
 class LoginListener implements EventSubscriberInterface
 {
-    /**
-     * @var EntityManager
-     */
-    protected $em;
+    /** @var  UserService */
+    protected $userService;
 
     /**
      * @var RequestStack
      */
     protected $requestStack;
 
-    public function __construct($entityManager, $requestStack)
+    public function __construct($userService, $requestStack)
     {
-        $this->em = $entityManager;
+        $this->userService = $userService;
         $this->requestStack = $requestStack;
     }
 
@@ -58,27 +56,10 @@ class LoginListener implements EventSubscriberInterface
      */
     public function onAuthenticationFailure(AuthenticationFailureEvent $event)
     {
-        try
-        {
-            // todo: rewrite it as a service
+        $username = $event->getAuthenticationToken()->getUsername();
+        $ip = $this->requestStack->getMasterRequest()->getClientIp();
+        $browser = $this->requestStack->getMasterRequest()->headers->get('User-Agent');
 
-            /** @var User $user */
-            $username = $event->getAuthenticationToken()->getUsername();
-            $rep = $this->em->getRepository('TimBackendBundle:User');
-            $user = $rep->findOneBy(array('username' => $username));
-
-            if (null !== $user) {
-                $user->setCountAttempt($user->getCountAttempt() + 1);
-                $user->setIpAddress($this->requestStack->getMasterRequest()->getClientIp());
-                $user->setBrowser($this->requestStack->getMasterRequest()->headers->get('User-Agent'));
-
-                $this->em->persist($user);
-                $this->em->flush();
-            }
-        }
-        catch(\Exception $ex)
-        {
-            // todo: add exception handler
-        }
+        $this->userService->saveUserLoginAttempt($username, $browser, $ip);
     }
 }

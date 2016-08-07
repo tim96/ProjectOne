@@ -1,6 +1,7 @@
 parameters:
     security.authentication.success_handler.class: Tim\BackendBundle\Handler\AuthenticationSuccessHandler
     security.authentication.failure_handler.class: Tim\BackendBundle\Handler\AuthenticationFailureHandler
+    tim_backend.service.user_service.class: Tim\BackendBundle\Service\UserService
 
 services:
 #    tim_backend.example:
@@ -9,13 +10,17 @@ services:
 
     tim_backend.listener.interactive_login_listener:
         class: Tim\BackendBundle\EventListener\LoginListener
-        arguments: ['@doctrine.orm.default_entity_manager', '@request_stack']
+        arguments: ['@tim_backend.service.user_service', '@request_stack']
         tags:
             - { name: kernel.event_listener, event: security.interactive_login, method: onAuthenticationSuccess }
 
     # authentication failure event listener
     tim_backend.listener.authentication_failure_event_listener:
         class: Tim\BackendBundle\EventListener\LoginListener
-        arguments: ['@doctrine.orm.default_entity_manager', '@request_stack']
+        arguments: ['@tim_backend.service.user_service', '@request_stack']
         tags:
             - { name: kernel.event_listener, event: security.authentication.failure, method: onAuthenticationFailure }
+
+    tim_backend.service.user_service:
+        class: '%tim_backend.service.user_service.class%'
+        arguments: ['@doctrine.orm.default_entity_manager']
