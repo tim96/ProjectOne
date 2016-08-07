@@ -42,3 +42,7 @@ monolog:
             level: debug
         console:
             type:  console
+        applog:
+            type: service
+            level: debug
+            id: logger_database

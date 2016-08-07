@@ -1,4 +1,11 @@
+parameters:
+    logger_database.class: Tim\DataBundle\Handler\LoggerDatabaseHandler
+
 services:
 #    tim_data.example:
 #        class: Tim\DataBundle\Example
 #        arguments: ["@service_id", "plain_value", %parameter%]
+    logger_database:
+        class: '%logger_database.class%'
+        calls:
+            - [ setContainer, [ '@service_container' ] ]

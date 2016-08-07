@@ -14,6 +14,6 @@ TODO:
 - [X] Add fields: browser, ip, count login attempt to Backend User entity
 - [X] Add function to save count attempt and login pause
 - [ ] Check users screen
-- [ ] Add log table. Log all errors
+- [X] Add log table. Log all errors
 - [ ] Add bower and gulp in project
 - [ ] Add layout for frontend
