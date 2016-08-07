@@ -32,3 +32,10 @@ php app/console doctrine:schema:update --force --dump-sql > migration.log
 php app/console doctrine:fixtures:load --append
 In our case we will using `backend` environment
 php app/console doctrine:fixtures:load --append --env backend
+
+11. Install bower:
+npm install -g bower
+
+12. Install additional libraries:
+bower install jquery bootstrap fontawesome highlight Chart.js symfony-collection
+
