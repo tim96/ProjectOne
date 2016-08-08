@@ -1,3 +1,8 @@
+# Override User Admin class
+parameters:
+    sonata.user.admin.user.class: Tim\BackendBundle\Admin\UserAdmin
+    sonata.user.admin.group.class: Tim\BackendBundle\Admin\BaseGroupAdmin
+
 sonata_block:
     default_contexts: [cms]
     blocks:
@@ -8,6 +13,14 @@ sonata_block:
 sonata_user:
     security_acl: false
     manager_type: orm
+    class:
+        user: Tim\BackendBundle\Entity\User
+        group: Tim\BackendBundle\Entity\BaseGroup
+    admin:
+        user:
+            class: Tim\BackendBundle\Admin\UserAdmin
+        group:
+            class: Tim\BackendBundle\Admin\BaseGroupAdmin
 
 sonata_admin:
     show_mosaic_button: false
