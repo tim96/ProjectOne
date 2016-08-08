@@ -30,3 +30,9 @@ services:
         arguments: [~, Tim\DataBundle\Entity\Logger, TimBackendBundle:LoggerAdmin]
         tags:
             - { name: sonata.admin, manager_type: orm, group: 'System', label: 'Log', icon: '<i class="fa fa-cogs"></i>' }
+
+    tim_backend.admin.configuration:
+        class: Tim\BackendBundle\Admin\ConfigurationAdmin
+        arguments: [~, Tim\DataBundle\Entity\Configuration, TimBackendBundle:ConfigurationAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'System', label: 'Configuration' }

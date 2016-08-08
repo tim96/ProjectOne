@@ -16,7 +16,7 @@ TODO:
 - [ ] Check users screen
 - [X] Add log table. Log all errors
 - [X] Add log screen in admin area
-- [ ] Add config screen in admin area
+- [X] Add config screen in admin area
 - [ ] Add ip screen in admin area
 - [ ] Add bower and gulp in project
 - [ ] Add layout for frontend
