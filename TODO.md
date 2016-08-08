@@ -18,5 +18,5 @@ TODO:
 - [X] Add log screen in admin area
 - [X] Add config screen in admin area
 - [X] Add ip screen in admin area
-- [ ] Add bower and gulp in project
+- [X] Add bower and gulp in project
 - [ ] Add layout for frontend
