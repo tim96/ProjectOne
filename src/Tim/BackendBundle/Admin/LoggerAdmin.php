@@ -11,6 +11,16 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class LoggerAdmin extends AbstractAdmin
 {
+    public function __construct($code, $class, $baseControllerName)
+    {
+        parent::__construct($code, $class, $baseControllerName);
+
+        $this->datagridValues = array(
+            '_sort_order' => 'DESC',
+            '_sort_by' => 'id',
+        );
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      * @throws \RuntimeException
