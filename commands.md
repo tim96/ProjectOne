@@ -49,4 +49,7 @@ gulp
 
 15. Generate sonata admin class:
 php app/console sonata:admin:generate Tim\DataBundle\Entity\Logger
+php app/console sonata:admin:generate Tim\DataBundle\Entity\Configuration
+php app/console sonata:admin:generate Tim\DataBundle\Entity\IpAddress
 
+16. Add icons to dashboard menu. See services.yml
