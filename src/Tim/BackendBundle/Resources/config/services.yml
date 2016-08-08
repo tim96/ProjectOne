@@ -24,3 +24,9 @@ services:
     tim_backend.service.user_service:
         class: '%tim_backend.service.user_service.class%'
         arguments: ['@doctrine.orm.default_entity_manager']
+
+    tim_backend.admin.logger:
+        class: Tim\BackendBundle\Admin\LoggerAdmin
+        arguments: [~, Tim\DataBundle\Entity\Logger, TimBackendBundle:LoggerAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'System', label: 'Log', icon: '<i class="fa fa-cogs"></i>' }
