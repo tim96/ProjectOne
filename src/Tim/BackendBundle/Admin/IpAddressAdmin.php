@@ -7,13 +7,9 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
-use Tim\DataBundle\Entity\Configuration;
+use Tim\DataBundle\Entity\IpAddress;
 
-/**
- * Class ConfigurationAdmin
- * @package Tim\BackendBundle\Admin
- */
-class ConfigurationAdmin extends AbstractAdmin
+class IpAddressAdmin extends AbstractAdmin
 {
     /**
      * @param DatagridMapper $datagridMapper
@@ -23,21 +19,12 @@ class ConfigurationAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('id')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('isActive')
+            ->add('ip')
+            ->add('description')
             ->add('author')
             ->add('updatedBy')
-            ->add('emailLogin')
-            // ->add('emailPassword')
-            // ->add('emailServer')
-            // ->add('emailPort')
-            // ->add('emailAuth')
-            ->add('prodEmailLogin')
-            // ->add('prodEmailPassword')
-            // ->add('prodEmailServer')
-            // ->add('prodEmailPort')
-            // ->add('prodEmailAuth')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 
@@ -56,21 +43,12 @@ class ConfigurationAdmin extends AbstractAdmin
                 )
             ))
             ->add('id')
-            ->add('isActive')
-            ->add('emailLogin')
-            // ->add('emailPassword')
-            // ->add('emailServer')
-            // ->add('emailPort')
-            // ->add('emailAuth')
-            ->add('prodEmailLogin')
-            // ->add('prodEmailPassword')
-            // ->add('prodEmailServer')
-            // ->add('prodEmailPort')
-            // ->add('prodEmailAuth')
-            ->add('createdAt')
+            ->add('ip')
+            ->add('description')
             ->add('author')
-            ->add('updatedAt')
             ->add('updatedBy')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 
@@ -81,21 +59,12 @@ class ConfigurationAdmin extends AbstractAdmin
     {
         $formMapper
             // ->add('id')
-            // ->add('createdAt')
-            // ->add('updatedAt')
-            ->add('isActive')
+            ->add('ip')
+            ->add('description')
             // ->add('author')
             // ->add('updatedBy')
-            ->add('emailLogin')
-            ->add('emailPassword')
-            ->add('emailServer')
-            ->add('emailPort')
-            ->add('emailAuth')
-            ->add('prodEmailLogin')
-            ->add('prodEmailPassword')
-            ->add('prodEmailServer')
-            ->add('prodEmailPort')
-            ->add('prodEmailAuth')
+            // ->add('createdAt')
+            // ->add('updatedAt')
         ;
     }
 
@@ -107,21 +76,12 @@ class ConfigurationAdmin extends AbstractAdmin
     {
         $showMapper
             ->add('id')
-            ->add('isActive')
-            ->add('emailLogin')
-            // ->add('emailPassword')
-            ->add('emailServer')
-            ->add('emailPort')
-            ->add('emailAuth')
-            ->add('prodEmailLogin')
-            // ->add('prodEmailPassword')
-            ->add('prodEmailServer')
-            ->add('prodEmailPort')
-            ->add('prodEmailAuth')
-            ->add('createdAt')
-            ->add('updatedAt')
+            ->add('ip')
+            ->add('description')
             ->add('author')
             ->add('updatedBy')
+            ->add('createdAt')
+            ->add('updatedAt')
         ;
     }
 
@@ -140,7 +100,7 @@ class ConfigurationAdmin extends AbstractAdmin
     }
 
     /**
-     * @param Configuration $object
+     * @param IpAddress $object
      * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
      * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
      */
@@ -154,7 +114,7 @@ class ConfigurationAdmin extends AbstractAdmin
     }
 
     /**
-     * @param Configuration $object
+     * @param IpAddress $object
      * @throws \Symfony\Component\DependencyInjection\Exception\ServiceCircularReferenceException
      * @throws \Symfony\Component\DependencyInjection\Exception\ServiceNotFoundException
      */

@@ -30,9 +30,21 @@ services:
         arguments: [~, Tim\DataBundle\Entity\Logger, TimBackendBundle:LoggerAdmin]
         tags:
             - { name: sonata.admin, manager_type: orm, group: 'System', label: 'Log', icon: '<i class="fa fa-cogs"></i>' }
+        calls:
+            - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
 
     tim_backend.admin.configuration:
         class: Tim\BackendBundle\Admin\ConfigurationAdmin
         arguments: [~, Tim\DataBundle\Entity\Configuration, TimBackendBundle:ConfigurationAdmin]
         tags:
             - { name: sonata.admin, manager_type: orm, group: 'System', label: 'Configuration' }
+        calls:
+            - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
+
+    tim_backend.admin.ip_address:
+        class: Tim\BackendBundle\Admin\IpAddressAdmin
+        arguments: [~, Tim\DataBundle\Entity\IpAddress, TimBackendBundle:IpAddressAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'System', label: 'ip_address_label' }
+        calls:
+            - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
