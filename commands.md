@@ -47,3 +47,6 @@ npm install gulp-if gulp-uglify gulp-uglifycss gulp-less gulp-concat gulp-source
 14. Run all scripts fron gulpfile.js:
 gulp
 
+15. Generate sonata admin class:
+php app/console sonata:admin:generate Tim\DataBundle\Entity\Logger
+
