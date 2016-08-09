@@ -14,7 +14,7 @@ TODO:
 - [X] Add fields: browser, ip, count login attempt to Backend User entity
 - [X] Add function to save count attempt and login pause
 - [X] Check users screen
-- [ ] Fix error in labels, fields in user, group admin screens
+- [X] Fix error in labels, fields in user, group admin screens
 - [X] Add log table. Log all errors
 - [X] Add log screen in admin area
 - [X] Add config screen in admin area
