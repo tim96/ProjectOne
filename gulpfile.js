@@ -11,8 +11,45 @@ gulp.task('js', function () {
     return gulp.src([
             // 'bower_components/jquery/dist/jquery.min.js',
             'bower_components/jquery-modern/dist/jquery.min.js',
-            'bower_components/bootstrap/dist/js/bootstrap.min.js'])
+            'bower_components/bootstrap/dist/js/bootstrap.min.js'
+    ])
         .pipe(concat('app.js'))
+        // .pipe(gulpif(env === 'prod', uglify()))
+        .pipe(uglify())
+        // .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('web/js'));
+});
+
+gulp.task('custom_js', function () {
+    return gulp.src([
+        'src/Tim/FrontendBundle/Resources/public/js/move-top.js',
+        'src/Tim/FrontendBundle/Resources/public/js/easing.js',
+        'src/Tim/FrontendBundle/Resources/public/js/owl.carousel.js',
+        'src/Tim/FrontendBundle/Resources/public/js/jquery.swipebox.min.js'
+    ])
+        .pipe(concat('custom_app.js'))
+        // .pipe(gulpif(env === 'prod', uglify()))
+        .pipe(uglify())
+        // .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('web/js'));
+});
+
+gulp.task('custom_js1', function () {
+    return gulp.src([
+        'src/Tim/FrontendBundle/Resources/public/js/wow.min.js'
+    ])
+        .pipe(concat('wow.min.js'))
+        // .pipe(gulpif(env === 'prod', uglify()))
+        .pipe(uglify())
+        // .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('web/js'));
+});
+
+gulp.task('custom_js2', function () {
+    return gulp.src([
+        'src/Tim/FrontendBundle/Resources/public/js/responsiveslides.min.js'
+    ])
+        .pipe(concat('responsiveslides.min.js'))
         // .pipe(gulpif(env === 'prod', uglify()))
         .pipe(uglify())
         // .pipe(sourcemaps.write('./'))
@@ -79,4 +116,6 @@ gulp.task('fonts', function() {
 });
 
 //define executable tasks when running "gulp" command
-gulp.task('default', ['js', 'css', 'custom_css', 'fonts', 'chart.js', 'symfony-collection.js']);
+gulp.task('default', ['js', 'custom_js', 'css', 'custom_css', 'fonts', 'chart.js', 'symfony-collection.js',
+    'custom_js1', 'custom_js2'
+]);
