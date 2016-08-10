@@ -167,7 +167,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                 <li><a data-hover="About" href="#about" class="scroll">About</a></li>
                                 <li><a data-hover="Services" href="#services" class="scroll">Services</a></li>
                                 <li><a data-hover="Chefs" href="#team" class="scroll">Chefs</a></li>
-                                <li><a data-hover="Reservation" href="#reservation" class="scroll">REservation</a></li>
+                                <li><a data-hover="Reservation" href="#reservation" class="scroll">Reservation</a></li>
                                 <li><a data-hover="Gallery" href="#gallery" class="scroll">Gallery</a></li>
                                 <li><a data-hover="Contact" href="#contact" class="scroll">Contact</a></li>
 
@@ -182,38 +182,51 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     {% endblock header %}
 
-    <div class="banner-slider">
-        <div class="callbacks_container">
-            <ul class="rslides" id="slider4">
-                <li>
-                    <div class="banner-info">
-                        <h3 class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">Welcome</h3>
-                        <p class="wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">TO THE HONEST FOOD</p>
-                        <div class="arrows wow slideInDown"  data-wow-duration="1s" data-wow-delay=".2s"><img src="images/border.png" alt="border"/></div>
-                        <span class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">READY TO BE OPENED</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="banner-info">
-                        <h3 class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">The Real</h3>
-                        <p class="wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">SPICY MASALAS</p>
-                        <div class="arrows wow slideInDown"  data-wow-duration="1s" data-wow-delay=".2s"><img src="images/border.png" alt="border"/></div>
-                        <span class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">READY TO BE OPENED</span>
-                    </div>
-                </li>
-                <li>
-                    <div class="banner-info">
-                        <h3 class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">Delicious</h3>
-                        <p class="wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">FRESH FOODS</p>
-                        <div class="arrows wow slideInDown"  data-wow-duration="1s" data-wow-delay=".2s"><img src="images/border.png" alt="border"/></div>
-                        <span class="wow slideInUpslideInLeft"  data-wow-duration="1s" data-wow-delay=".3s">READY TO BE OPENED</span>
-                    </div>
-                </li>
-            </ul>
+    {% block main_slider %}
+        {% set borderImages = '/images/border.png' %}
+        <div class="banner-slider">
+            <div class="callbacks_container">
+                <ul class="rslides" id="slider4">
+                    <li>
+                        <div class="banner-info">
+                            <h3 class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">Welcome</h3>
+                            <p class="wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">TO THE HONEST FOOD</p>
+                            <div class="arrows wow slideInDown"  data-wow-duration="1s" data-wow-delay=".2s">
+                                <img src="{{ borderImages }}" alt="border"/>
+                            </div>
+                            <span class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">
+                                READY TO BE OPENED
+                            </span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="banner-info">
+                            <h3 class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">The Real</h3>
+                            <p class="wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">SPICY MASALAS</p>
+                            <div class="arrows wow slideInDown"  data-wow-duration="1s" data-wow-delay=".2s">
+                                <img src="{{ borderImages }}" alt="border"/>
+                            </div>
+                            <span class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">READY TO BE OPENED</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="banner-info">
+                            <h3 class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">Delicious</h3>
+                            <p class="wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">FRESH FOODS</p>
+                            <div class="arrows wow slideInDown"  data-wow-duration="1s" data-wow-delay=".2s">
+                                <img src="{{ borderImages }}" alt="border"/>
+                            </div>
+                            <span class="wow slideInUpslideInLeft"  data-wow-duration="1s" data-wow-delay=".3s">READY TO BE OPENED</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
+    {% endblock main_slider %}
 
-    <div class="down"><a class="scroll" href="#services"><img src="images/down.png" alt=""></a></div>
+    {% block next_block %}
+        <div class="down"><a class="scroll" href="#services"><img src="/images/down.png" alt=""></a></div>
+    {% endblock next_block %}
 </div>
 
 <!--/products-->
