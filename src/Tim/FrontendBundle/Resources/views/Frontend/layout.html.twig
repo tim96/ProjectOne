@@ -117,8 +117,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 {% endblock content %}
 
+{% block main_content %}
 <!--start-home-->
 <div class="banner" id="home">
+
+    {% block header %}
     <div class="header-bottom wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">
         <div class="container">
             <div class="fixed-header">
@@ -170,6 +173,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             </div>
         </div>
     </div>
+    {% endblock header %}
+
     <div class="banner-slider">
         <div class="callbacks_container">
             <ul class="rslides" id="slider4">
@@ -751,6 +756,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </script>
 <!--end-smooth-scrolling-->
 <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+{% endblock main_content %}
 
 </body>
 </html>
