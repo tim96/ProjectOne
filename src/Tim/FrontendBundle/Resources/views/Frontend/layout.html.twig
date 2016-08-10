@@ -16,14 +16,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
     {% endblock meta_tags %}
 
-    <script type="applisalonion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <script type="text/javascript">
+        addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+        function hideURLbar(){ window.scrollTo(0,1); }
+    </script>
 
     {% block stylesheets %}
         <!-- Bootstrap and additional libraries -->
-        <link href="css/styles.css" rel='stylesheet' type='text/css' />
+        <link href="/css/styles.css" rel='stylesheet' type='text/css' />
 
         <!-- Custom Theme files -->
-        <link href="css/custom_styles.css" rel='stylesheet' type='text/css' />
+        <link href="/css/custom_styles.css" rel='stylesheet' type='text/css' />
         {#<link href="css/iconeffects.css" rel='stylesheet' type='text/css' />#}
         {#<link href="css/style.css" rel='stylesheet' type='text/css' />#}
         {#<link href="css/swipebox.css" rel="stylesheet" >#}
@@ -38,16 +41,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     {% block javascripts %}
         <!-- Bootstrap, jquery and additional libraries -->
-        <script type="text/javascript" src="js/app.js"></script>
+        <script type="text/javascript" src="/js/app.js"></script>
 
         <!-- Custom Javascript files -->
-        <script type="text/javascript" src="js/custom_app.js"></script>
+        <script type="text/javascript" src="/js/custom_app.js"></script>
         {#<script type="text/javascript" src="js/move-top.js"></script>#}
         {#<script type="text/javascript" src="js/easing.js"></script>#}
         {#<script type="text/javascript" src="js/owl.carousel.js"></script>#}
         {#<script type="text/javascript" src="js/jquery.swipebox.min.js"></script>#}
-        <script type="text/javascript" src="js/wow.min.js"></script>
-        <script type="text/javascript" src="js/responsiveslides.min.js"></script>
+        <script type="text/javascript" src="/js/wow.min.js"></script>
+        <script type="text/javascript" src="/js/responsiveslides.min.js"></script>
 
         <script type="text/javascript">
             jQuery(document).ready(function($) {
@@ -109,6 +112,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             });
         </script>
         <!--banner Slider starts Here-->
+
+        <script>
+            $("span.menu").click(function(){
+                $(".top-menu ul").slideToggle("slow" , function(){
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                var navoffeset=$(".header-bottom").offset().top;
+                $(window).scroll(function(){
+                    var scrollpos=$(window).scrollTop();
+                    if(scrollpos >=navoffeset){
+                        $(".header-bottom").addClass("fixed");
+                    }else{
+                        $(".header-bottom").removeClass("fixed");
+                    }
+                });
+
+            });
+        </script>
     {% endblock javascripts %}
 </head>
 <body>
@@ -125,51 +150,33 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="header-bottom wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">
         <div class="container">
             <div class="fixed-header">
-                <!--logo-->
-                <div class="logo">
-                    <a href="index.html"><h1>H<span>onest Food</span></h1></a>
-                    <p>The Real taste</p>
-                </div>
-                <!--//logo-->
-                <div class="top-menu">
-                    <span class="menu"> </span>
-                    <nav class="link-effect-4" id="link-effect-4">
-                        <ul>
-                            <li class="active"><a data-hover="Home" href="index.html">Home</a></li>
-                            <li><a data-hover="About" href="#about" class="scroll">About</a></li>
-                            <li><a data-hover="Services" href="#services" class="scroll">Services</a></li>
-                            <li><a data-hover="Chefs" href="#team" class="scroll">Chefs</a></li>
-                            <li><a data-hover="Reservation" href="#reservation" class="scroll">REservation</a></li>
-                            <li><a data-hover="Gallery" href="#gallery" class="scroll">Gallery</a></li>
-                            <li><a data-hover="Contact" href="#contact" class="scroll">Contact</a></li>
 
-                        </ul>
-                    </nav>
-                </div>
-                <!-- script-for-menu -->
-                <script>
-                    $("span.menu").click(function(){
-                        $(".top-menu ul").slideToggle("slow" , function(){
-                        });
-                    });
-                </script>
-                <!-- script-for-menu -->
+                {% block logo %}
+                    <div class="logo">
+                        <a href="{{ path('tim_frontend') }}"><h1>H<span>onest Food</span></h1></a>
+                        <p>The Real taste</p>
+                    </div>
+                {% endblock logo %}
+
+                {% block top_menu %}
+                    <div class="top-menu">
+                        <span class="menu"> </span>
+                        <nav class="link-effect-4" id="link-effect-4">
+                            <ul>
+                                <li class="active"><a data-hover="Home" href="{{ path('tim_frontend') }}">Home</a></li>
+                                <li><a data-hover="About" href="#about" class="scroll">About</a></li>
+                                <li><a data-hover="Services" href="#services" class="scroll">Services</a></li>
+                                <li><a data-hover="Chefs" href="#team" class="scroll">Chefs</a></li>
+                                <li><a data-hover="Reservation" href="#reservation" class="scroll">REservation</a></li>
+                                <li><a data-hover="Gallery" href="#gallery" class="scroll">Gallery</a></li>
+                                <li><a data-hover="Contact" href="#contact" class="scroll">Contact</a></li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                {% endblock top_menu %}
 
                 <div class="clearfix"></div>
-                <script>
-                    $(document).ready(function() {
-                        var navoffeset=$(".header-bottom").offset().top;
-                        $(window).scroll(function(){
-                            var scrollpos=$(window).scrollTop();
-                            if(scrollpos >=navoffeset){
-                                $(".header-bottom").addClass("fixed");
-                            }else{
-                                $(".header-bottom").removeClass("fixed");
-                            }
-                        });
-
-                    });
-                </script>
             </div>
         </div>
     </div>
