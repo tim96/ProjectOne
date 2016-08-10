@@ -49,8 +49,8 @@ class LoggerAdmin extends AbstractAdmin
             ->add('_action', null, array(
                 'actions' => array(
                     'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
+                    // 'edit' => array(),
+                    // 'delete' => array(),
                 )
             ))
             ->add('id')
