@@ -6,6 +6,10 @@
                 <source>ip_address_label</source>
                 <target>Ip Addresses</target>
             </trans-unit>
+            <trans-unit id="slider_info_label">
+                <source>slider_info_label</source>
+                <target>Slider Info</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

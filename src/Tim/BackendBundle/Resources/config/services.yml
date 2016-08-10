@@ -48,3 +48,11 @@ services:
             - { name: sonata.admin, manager_type: orm, group: 'System', label: 'ip_address_label' }
         calls:
             - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
+
+    tim_backend.admin.slider_info:
+        class: Tim\BackendBundle\Admin\SliderInfoAdmin
+        arguments: [~, Tim\DataBundle\Entity\SliderInfo, TimBackendBundle:SliderInfoAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Info', label: 'slider_info_label' }
+        calls:
+            - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
