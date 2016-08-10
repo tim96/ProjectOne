@@ -115,7 +115,16 @@ gulp.task('fonts', function() {
         .pipe(gulp.dest('web/fonts'));
 });
 
+gulp.task('images', function () {
+    return gulp.src([
+        'src/Tim/FrontendBundle/Resources/public/images/**/*.*'
+        ])
+        // .pipe(gulpif(env === 'prod', uglifycss()))
+        // .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest('web/images'));
+});
+
 //define executable tasks when running "gulp" command
 gulp.task('default', ['js', 'custom_js', 'css', 'custom_css', 'fonts', 'chart.js', 'symfony-collection.js',
-    'custom_js1', 'custom_js2'
+    'custom_js1', 'custom_js2', 'images'
 ]);
