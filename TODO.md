@@ -21,5 +21,6 @@ TODO:
 - [X] Add ip screen in admin area
 - [X] Add bower and gulp in project
 - [X] Add layout for frontend
-- [ ] Add handler for SliderInfo
-- [ ] Add slider info block form database to main layout in controller action
+- [X] Add handler for SliderInfo
+- [X] Add slider info block form database to main layout in controller action
+- [ ] Add welcome and about entity
