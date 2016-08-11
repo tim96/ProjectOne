@@ -14,6 +14,11 @@ class FrontendController extends Controller
 {
     public function indexAction()
     {
-        return $this->render('TimFrontendBundle:Frontend:index.html.twig');
+        $sliderInfoService = $this->container->get('tim_data.slider_info_handler');
+        $sliderInfo = $sliderInfoService->getSliderInfo()->getArrayResult();
+
+        return $this->render('TimFrontendBundle:Frontend:index.html.twig', array(
+            'sliderInfo' => $sliderInfo,
+        ));
     }
 }

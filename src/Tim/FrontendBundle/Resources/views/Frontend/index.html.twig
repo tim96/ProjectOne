@@ -2,3 +2,27 @@
 
 {% block content %}
 {% endblock content %}
+
+ {% block main_slider %}
+     {% set borderImages = '/images/border.png' %}
+     <div class="banner-slider">
+         <div class="callbacks_container">
+          <ul class="rslides" id="slider4">
+             {% for key, item in sliderInfo %}
+                 <li>
+                     <div class="banner-info">
+                         <h3 class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">{{ item.title }}</h3>
+                         <p class="wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">{{ item.mainText }}</p>
+                         <div class="arrows wow slideInDown"  data-wow-duration="1s" data-wow-delay=".2s">
+                             <img src="{{ borderImages }}" alt="border"/>
+                         </div>
+                            <span class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">
+                               {{ item.footer }}
+                            </span>
+                     </div>
+                 </li>
+             {% endfor %}
+          </ul>
+         </div>
+     </div>
+ {% endblock main_slider %}
