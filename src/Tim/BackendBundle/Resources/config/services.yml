@@ -53,6 +53,6 @@ services:
         class: Tim\BackendBundle\Admin\SliderInfoAdmin
         arguments: [~, Tim\DataBundle\Entity\SliderInfo, TimBackendBundle:SliderInfoAdmin]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: 'Info', label: 'slider_info_label' }
+            - { name: sonata.admin, manager_type: orm, group: 'Info', label: 'slider_info_label', icon: '<i class="fa fa-book"></i>' }
         calls:
             - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
