@@ -12,4 +12,16 @@ use Doctrine\ORM\EntityRepository;
  */
 class SliderInfoRepository extends EntityRepository
 {
+    public function getSliderInfoQuery($limit = null)
+    {
+        $qb = $this->createQueryBuilder('si');
+
+        if (null !== $limit && $limit > 0) {
+            $qb->setMaxResults((int)$limit);
+        }
+
+        $qb->orderBy('si.orderNumber', 'ASC');
+
+        return $qb;
+    }
 }
