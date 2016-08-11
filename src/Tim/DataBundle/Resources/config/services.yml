@@ -1,5 +1,6 @@
 parameters:
     logger_database.class: Tim\DataBundle\Handler\LoggerDatabaseHandler
+    slider_info.class: Tim\DataBundle\Handler\SliderInfoHandler
 
 services:
 #    tim_data.example:
@@ -9,3 +10,7 @@ services:
         class: '%logger_database.class%'
         calls:
             - [ setContainer, [ '@service_container' ] ]
+
+    tim_data.slider_info_handler:
+        class: '%slider_info.class%'
+        arguments: ['@doctrine.orm.default_entity_manager']
