@@ -70,6 +70,13 @@ class BlogRecord
     protected $imagePath;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="button_text", type="string", length=255)
+     */
+    protected $buttonText;
+
+    /**
      * @Assert\NotBlank()
      * @Assert\Type("\DateTime")
      *
@@ -385,5 +392,28 @@ class BlogRecord
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    /**
+     * Set buttonText
+     *
+     * @param string $buttonText
+     * @return BlogRecord
+     */
+    public function setButtonText($buttonText)
+    {
+        $this->buttonText = $buttonText;
+
+        return $this;
+    }
+
+    /**
+     * Get buttonText
+     *
+     * @return string 
+     */
+    public function getButtonText()
+    {
+        return $this->buttonText;
     }
 }
