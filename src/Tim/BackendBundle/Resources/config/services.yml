@@ -56,3 +56,11 @@ services:
             - { name: sonata.admin, manager_type: orm, group: 'Info', label: 'slider_info_label', icon: '<i class="fa fa-book"></i>' }
         calls:
             - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
+
+    tim_backend.admin.about_item:
+        class: Tim\BackendBundle\Admin\AboutItemAdmin
+        arguments: [~, Tim\DataBundle\Entity\AboutItem, TimBackendBundle:AboutItemAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Info', label: 'about_item_label' }
+        calls:
+            - [ setTranslationDomain, [ 'TimBackendBundle' ] ]

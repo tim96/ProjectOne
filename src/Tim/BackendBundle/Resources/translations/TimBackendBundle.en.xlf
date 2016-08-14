@@ -10,6 +10,10 @@
                 <source>slider_info_label</source>
                 <target>Slider Info</target>
             </trans-unit>
+            <trans-unit id="about_item_label">
+                <source>about_item_label</source>
+                <target>About Item</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
