@@ -14,6 +14,10 @@
                 <source>about_item_label</source>
                 <target>About Item</target>
             </trans-unit>
+            <trans-unit id="blog_record_label">
+                <source>blog_record_label</source>
+                <target>Blog</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
