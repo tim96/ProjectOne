@@ -23,4 +23,11 @@ TODO:
 - [X] Add layout for frontend
 - [X] Add handler for SliderInfo
 - [X] Add slider info block form database to main layout in controller action
+- [ ] Add upload image function to AboutItem
+- [ ] Add upload image function to BlogRecord
+- [ ] Add slug url generate function to BlogRecord
+- [ ] Add temp entity to connect 2 AboutItems + 1 BlogRecord
+- [ ] Add validation rule what BlogRecord can have only 2 AboutItems
+- [ ] Add 3 services for this entities
+- [ ] Show previous entity on main layout screen
 - [ ] Add welcome and about entity
