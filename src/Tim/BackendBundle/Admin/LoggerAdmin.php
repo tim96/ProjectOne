@@ -53,7 +53,7 @@ class LoggerAdmin extends AbstractAdmin
                     // 'delete' => array(),
                 )
             ))
-            ->add('id')
+            ->addIdentifier('id')
             ->add('level')
             ->add('levelName')
             ->add('message')

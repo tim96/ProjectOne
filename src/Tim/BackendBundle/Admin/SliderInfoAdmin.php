@@ -54,7 +54,7 @@ class SliderInfoAdmin extends AbstractAdmin
                     'delete' => array(),
                 )
             ))
-            ->add('id')
+            ->addIdentifier('id')
             ->add('title')
             ->add('mainText')
             ->add('footer')

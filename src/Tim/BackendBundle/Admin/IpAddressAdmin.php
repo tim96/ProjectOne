@@ -52,7 +52,7 @@ class IpAddressAdmin extends AbstractAdmin
                     'delete' => array(),
                 )
             ))
-            ->add('id')
+            ->addIdentifier('id')
             ->add('ip')
             ->add('description')
             ->add('author')

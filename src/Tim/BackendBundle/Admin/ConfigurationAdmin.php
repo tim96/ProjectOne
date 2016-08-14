@@ -65,7 +65,7 @@ class ConfigurationAdmin extends AbstractAdmin
                     'delete' => array(),
                 )
             ))
-            ->add('id')
+            ->addIdentifier('id')
             ->add('isActive')
             ->add('emailLogin')
             // ->add('emailPassword')
