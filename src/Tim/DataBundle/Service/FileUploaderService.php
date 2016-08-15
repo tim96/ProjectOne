@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class FileUploaderService
 {
-    private $targetDir;
+    protected $targetDir;
 
     public function __construct($targetDir)
     {
@@ -26,5 +26,16 @@ class FileUploaderService
         $file->move($this->targetDir, $fileName);
 
         return $fileName;
+    }
+
+    public function remove($filename)
+    {
+        $file_path = $this->targetDir . DIRECTORY_SEPARATOR . $filename;
+        if (file_exists($file_path)) { unlink($file_path); }
+    }
+
+    public function getTargetDir()
+    {
+        return $this->targetDir;
     }
 }

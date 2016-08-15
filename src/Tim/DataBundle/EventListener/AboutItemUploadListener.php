@@ -8,30 +8,9 @@ use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Tim\DataBundle\Entity\AboutItem;
 use Tim\DataBundle\Service\FileUploaderService;
 
-class AboutItemUploadListener
+class AboutItemUploadListener extends UploadListener
 {
-    private $uploader;
-
-    public function __construct(FileUploaderService $uploader)
-    {
-        $this->uploader = $uploader;
-    }
-
-    public function prePersist(LifecycleEventArgs $args)
-    {
-        $entity = $args->getEntity();
-
-        $this->uploadFile($entity);
-    }
-
-    public function preUpdate(PreUpdateEventArgs $args)
-    {
-        $entity = $args->getEntity();
-
-        $this->uploadFile($entity);
-    }
-
-    private function uploadFile($entity)
+    protected function uploadFile($entity)
     {
         if (!$entity instanceof AboutItem) {
             return;
