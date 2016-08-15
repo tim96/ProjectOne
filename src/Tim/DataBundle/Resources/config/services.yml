@@ -14,3 +14,14 @@ services:
     tim_data.slider_info_handler:
         class: '%slider_info.class%'
         arguments: ['@doctrine.orm.default_entity_manager']
+
+    tim_data.about_item.service:
+        class: Tim\DataBundle\Service\FileUploaderService
+        arguments: ['%about_item_directory%']
+
+    tim_data.about_item_upload_listener:
+        class: Tim\DataBundle\EventListener\AboutItemUploadListener
+        arguments: ['@tim_data.about_item.service']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
