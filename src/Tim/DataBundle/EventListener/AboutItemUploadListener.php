@@ -3,10 +3,7 @@
 namespace Tim\DataBundle\EventListener;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Tim\DataBundle\Entity\AboutItem;
-use Tim\DataBundle\Service\FileUploaderService;
 
 class AboutItemUploadListener extends UploadListener
 {
