@@ -25,3 +25,20 @@ services:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
+
+    tim_data.blog_record.service:
+        class: Tim\DataBundle\Service\FileUploaderService
+        arguments: ['%blog_record_directory%']
+
+    tim_data.blog_record_upload_listener:
+        class: Tim\DataBundle\EventListener\BlogRecordUploadListener
+        arguments: ['@tim_data.blog_record.service']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+
+    tim_data.exception_listener:
+        class: Tim\DataBundle\EventListener\ExceptionListener
+        arguments: ['@doctrine.orm.default_entity_manager']
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
