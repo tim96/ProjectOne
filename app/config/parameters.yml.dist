@@ -19,3 +19,4 @@ parameters:
     secret:            ThisTokenIsNotSoSecretChangeIt
     locale: en
     about_item_directory: '%kernel.root_dir%/../web/uploads'
+    blog_record_directory: '%kernel.root_dir%/../web/uploads'
