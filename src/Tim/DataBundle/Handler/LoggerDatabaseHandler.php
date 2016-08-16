@@ -6,6 +6,7 @@ use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\Logger;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class LoggerDatabaseHandler extends AbstractProcessingHandler
 {
@@ -41,6 +42,12 @@ class LoggerDatabaseHandler extends AbstractProcessingHandler
             return;
         }
 
+        if (isset($record['context']['exception'])) {
+            if ($record['context']['exception'] instanceof NotFoundHttpException) {
+                return ;
+            }
+        }
+
         // todo: add save level from db
         if ((int)$record['level'] > Logger::WARNING) {
             try {
@@ -56,14 +63,10 @@ class LoggerDatabaseHandler extends AbstractProcessingHandler
                 $userIp = null;
                 $browser = null;
                 if (null !== $request) {
-                    $serverData = array();
-                    $serverData[] = $browser = $request->server->get('HTTP_USER_AGENT');
-                    $serverData[] = $request->server->get('SERVER_SOFTWARE');
-                    $serverData[] = $request->server->get('SCRIPT_FILENAME');
-                    $serverData[] = htmlspecialchars($request->server->get('QUERY_STRING'));
-                    $serverData[] = htmlspecialchars($request->server->get('REQUEST_URI'));
-                    $serverData[] = $userIp = $request->getClientIp();
-                    $data = implode('; ', $serverData);
+                    $info = $this->getInfoRequest($request);
+                    $browser = $info['browser'];
+                    $userIp = $info['userIp'];
+                    $data = $info['data'];
                 }
 
                 if (!is_null($this->container->get('security.token_storage')->getToken())) {
@@ -90,5 +93,28 @@ class LoggerDatabaseHandler extends AbstractProcessingHandler
                 error_log($e->getMessage());
             }
         }
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return array
+     */
+    protected function getInfoRequest($request)
+    {
+        $userIp = null;
+        $browser = null;
+        $serverData = array();
+        $serverData[] = $browser = $request->server->get('HTTP_USER_AGENT');
+        $serverData[] = $request->server->get('SERVER_SOFTWARE');
+        $serverData[] = $request->server->get('SCRIPT_FILENAME');
+        $serverData[] = htmlspecialchars($request->server->get('QUERY_STRING'));
+        $serverData[] = htmlspecialchars($request->server->get('REQUEST_URI'));
+        $serverData[] = $userIp = $request->getClientIp();
+        $data = implode('; ', $serverData);
+
+        return array('browser' => $browser,
+                'userIp' => $userIp,
+                'data' => $data);
     }
 }
