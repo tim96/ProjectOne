@@ -70,7 +70,7 @@ class AboutItemAdmin extends AbstractAdmin
         $formMapper
             // ->add('id')
             ->add('title')
-            ->add('imagePath', 'file')
+            ->add('file', 'file', array('required' => false))
             // ->add('createdAt')
             // ->add('updatedAt')
             // ->add('author')

@@ -25,6 +25,7 @@ services:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.orm.event_listener, event: postLoad, method: postLoad }
 
     tim_data.blog_record.service:
         class: Tim\DataBundle\Service\FileUploaderService

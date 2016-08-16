@@ -69,6 +69,8 @@ class AboutItem
      */
     protected $updatedBy;
 
+    protected $file;
+
     public function __construct()
     {
         $this->createdAt = new \DateTime();
@@ -228,5 +230,17 @@ class AboutItem
     public function getUpdatedBy()
     {
         return $this->updatedBy;
+    }
+
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile($file)
+    {
+        $this->file = $file;
+
+        return $this;
     }
 }
