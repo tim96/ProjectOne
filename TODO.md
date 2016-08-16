@@ -24,8 +24,10 @@ TODO:
 - [X] Add handler for SliderInfo
 - [X] Add slider info block form database to main layout in controller action
 - [X] Add upload image function to AboutItem
-- [ ] Add upload image function to BlogRecord
-- [ ] Add slug url generate function to BlogRecord
+- [X] Add upload image function to BlogRecord
+- [X] Add slug url generate function to BlogRecord
+- [ ] Add function to receive some info about user in ExceptionListener
+- [ ] Refactoring function to save image in BlogItem (Add new private field for image)
 - [ ] Add temp entity to connect 2 AboutItems + 1 BlogRecord
 - [ ] Add validation rule what BlogRecord can have only 2 AboutItems
 - [ ] Add 3 services for this entities
