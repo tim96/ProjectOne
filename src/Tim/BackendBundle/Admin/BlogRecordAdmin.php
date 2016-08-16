@@ -2,6 +2,7 @@
 
 namespace Tim\BackendBundle\Admin;
 
+use Cocur\Slugify\Slugify;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
@@ -75,7 +76,7 @@ class BlogRecordAdmin extends AbstractAdmin
             // ->add('titleSlug')
             ->add('description')
             ->add('text')
-            ->add('imagePath')
+            ->add('imagePath', 'file')
             ->add('buttonText')
             // ->add('createdAt')
             // ->add('updatedAt')
@@ -114,6 +115,7 @@ class BlogRecordAdmin extends AbstractAdmin
         parent::prePersist($object);
 
         $this->setAuthor($object);
+        $this->setSlug($object);
     }
 
     public function preUpdate($object)
@@ -121,6 +123,7 @@ class BlogRecordAdmin extends AbstractAdmin
         parent::preUpdate($object);
 
         $this->setUpdatedBy($object);
+        $this->setSlug($object);
     }
 
     /**
@@ -149,5 +152,14 @@ class BlogRecordAdmin extends AbstractAdmin
 
         $object->setUpdatedBy($user->getId());
         $object->setUpdatedAt(new \DateTime());
+    }
+
+    /**
+     * @param BlogRecord $object
+     */
+    protected function setSlug($object)
+    {
+        $slugify = new Slugify();
+        $object->setTitleSlug($slugify->slugify($object->getTitle()));
     }
 }

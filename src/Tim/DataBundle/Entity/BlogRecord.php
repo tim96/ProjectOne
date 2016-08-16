@@ -35,9 +35,6 @@ class BlogRecord
     /**
      * @var string
      *
-     * @Assert\NotBlank()
-     * @Assert\NotNull()
-     *
      * @ORM\Column(name="title_slug", type="string", length=255)
      */
     protected $titleSlug;
