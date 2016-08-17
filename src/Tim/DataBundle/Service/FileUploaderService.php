@@ -34,6 +34,18 @@ class FileUploaderService
         if (file_exists($file_path)) { unlink($file_path); }
     }
 
+    public function getFileHash($filename)
+    {
+        $filePath = $this->targetDir . DIRECTORY_SEPARATOR . $filename;
+        return $this->getHash($filePath);
+    }
+
+    public function getHash($filePath)
+    {
+        return sha1_file($filePath);
+    }
+
+
     public function getTargetDir()
     {
         return $this->targetDir;
