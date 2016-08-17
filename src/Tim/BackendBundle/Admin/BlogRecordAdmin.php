@@ -12,6 +12,16 @@ use Tim\DataBundle\Entity\BlogRecord;
 
 class BlogRecordAdmin extends AbstractAdmin
 {
+    public function __construct($code, $class, $baseControllerName)
+    {
+        parent::__construct($code, $class, $baseControllerName);
+
+        $this->datagridValues = array(
+            '_sort_order' => 'DESC',
+            '_sort_by' => 'id',
+        );
+    }
+
     /**
      * @param DatagridMapper $datagridMapper
      * @throws \RuntimeException
@@ -76,7 +86,7 @@ class BlogRecordAdmin extends AbstractAdmin
             // ->add('titleSlug')
             ->add('description')
             ->add('text')
-            ->add('imagePath', 'file')
+            ->add('file', 'file', array('required' => false))
             ->add('buttonText')
             // ->add('createdAt')
             // ->add('updatedAt')
