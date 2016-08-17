@@ -18,6 +18,10 @@
                 <source>blog_record_label</source>
                 <target>Blog</target>
             </trans-unit>
+            <trans-unit id="about_record_label">
+                <source>about_record_label</source>
+                <target>About Widget</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

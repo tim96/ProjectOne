@@ -72,3 +72,11 @@ services:
             - { name: sonata.admin, manager_type: orm, group: 'Info', label: 'blog_record_label' }
         calls:
             - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
+
+    tim_backend.admin.about:
+        class: Tim\BackendBundle\Admin\AboutAdmin
+        arguments: [~, Tim\DataBundle\Entity\About, TimBackendBundle:AboutAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Info', label: 'about_record_label' }
+        calls:
+            - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
