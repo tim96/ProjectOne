@@ -427,4 +427,9 @@ class BlogRecord
 
         return $this;
     }
+
+    public function getTitleForSelect()
+    {
+        return $this->id . ') ' . $this->title;
+    }
 }

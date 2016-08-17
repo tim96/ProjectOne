@@ -2,16 +2,17 @@
 
 namespace Tim\DataBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * AboutItem
+ * About
  *
- * @ORM\Table(name="data_about_item")
- * @ORM\Entity(repositoryClass="Tim\DataBundle\Repository\AboutItemRepository")
+ * @ORM\Table(name="data_about")
+ * @ORM\Entity(repositoryClass="Tim\DataBundle\Repository\AboutRepository")
  */
-class AboutItem
+class About
 {
     /**
      * @var int
@@ -30,14 +31,7 @@ class AboutItem
      *
      * @ORM\Column(name="title", type="string", length=255)
      */
-    protected $title;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="image_path", type="string", length=255, nullable=true)
-     */
-    protected $imagePath;
+    protected $description;
 
     /**
      * @Assert\NotBlank()
@@ -69,12 +63,17 @@ class AboutItem
      */
     protected $updatedBy;
 
-    protected $file;
+    /**
+     * @ORM\ManyToOne(targetEntity="\Tim\DataBundle\Entity\BlogRecord")
+     * @ORM\JoinColumn(name="blog_record_id", referencedColumnName="id")
+     */
+    protected $blogRecord;
 
     /**
-     * @ORM\ManyToMany(targetEntity="\Tim\DataBundle\Entity\About", mappedBy="aboutItems")
+     * @ORM\ManyToMany(targetEntity="\Tim\DataBundle\Entity\AboutItem", inversedBy="abouts")
+     * @ORM\JoinTable(name="about_about_item")
      **/
-    protected $abouts;
+    protected $aboutItems;
 
     public function __construct()
     {
@@ -82,6 +81,8 @@ class AboutItem
         $this->updatedAt = new \DateTime();
         $this->author = 0;
         $this->updatedBy = null;
+        $this->aboutItems = new ArrayCollection();
+        $this->blogRecord = null;
     }
 
     public function __toString()
@@ -100,56 +101,33 @@ class AboutItem
     }
 
     /**
-     * Set title
+     * Set description
      *
-     * @param string $title
-     * @return AboutItem
+     * @param string $description
+     * @return About
      */
-    public function setTitle($title)
+    public function setDescription($description)
     {
-        $this->title = $title;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get description
      *
      * @return string 
      */
-    public function getTitle()
+    public function getDescription()
     {
-        return $this->title;
-    }
-
-    /**
-     * Set imagePath
-     *
-     * @param string $imagePath
-     * @return AboutItem
-     */
-    public function setImagePath($imagePath)
-    {
-        $this->imagePath = $imagePath;
-
-        return $this;
-    }
-
-    /**
-     * Get imagePath
-     *
-     * @return string 
-     */
-    public function getImagePath()
-    {
-        return $this->imagePath;
+        return $this->description;
     }
 
     /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
-     * @return AboutItem
+     * @return About
      */
     public function setCreatedAt($createdAt)
     {
@@ -172,7 +150,7 @@ class AboutItem
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
-     * @return AboutItem
+     * @return About
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -195,7 +173,7 @@ class AboutItem
      * Set author
      *
      * @param integer $author
-     * @return AboutItem
+     * @return About
      */
     public function setAuthor($author)
     {
@@ -218,7 +196,7 @@ class AboutItem
      * Set updatedBy
      *
      * @param integer $updatedBy
-     * @return AboutItem
+     * @return About
      */
     public function setUpdatedBy($updatedBy)
     {
@@ -237,53 +215,59 @@ class AboutItem
         return $this->updatedBy;
     }
 
-    public function getFile()
+    /**
+     * Set blogRecord
+     *
+     * @param \Tim\DataBundle\Entity\BlogRecord $blogRecord
+     * @return About
+     */
+    public function setBlogRecord(\Tim\DataBundle\Entity\BlogRecord $blogRecord = null)
     {
-        return $this->file;
-    }
-
-    public function setFile($file)
-    {
-        $this->file = $file;
+        $this->blogRecord = $blogRecord;
 
         return $this;
     }
 
     /**
-     * Add abouts
+     * Get blogRecord
      *
-     * @param \Tim\DataBundle\Entity\About $abouts
-     * @return AboutItem
+     * @return \Tim\DataBundle\Entity\BlogRecord 
      */
-    public function addAbout(\Tim\DataBundle\Entity\About $abouts)
+    public function getBlogRecord()
     {
-        $this->abouts[] = $abouts;
+        return $this->blogRecord;
+    }
+
+    /**
+     * Add aboutItems
+     *
+     * @param \Tim\DataBundle\Entity\AboutItem $aboutItems
+     * @return About
+     */
+    public function addAboutItem(\Tim\DataBundle\Entity\AboutItem $aboutItems)
+    {
+        $this->aboutItems[] = $aboutItems;
 
         return $this;
     }
 
     /**
-     * Remove abouts
+     * Remove aboutItems
      *
-     * @param \Tim\DataBundle\Entity\About $abouts
+     * @param \Tim\DataBundle\Entity\AboutItem $aboutItems
      */
-    public function removeAbout(\Tim\DataBundle\Entity\About $abouts)
+    public function removeAboutItem(\Tim\DataBundle\Entity\AboutItem $aboutItems)
     {
-        $this->abouts->removeElement($abouts);
+        $this->aboutItems->removeElement($aboutItems);
     }
 
     /**
-     * Get abouts
+     * Get aboutItems
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getAbouts()
+    public function getAboutItems()
     {
-        return $this->abouts;
-    }
-
-    public function getTitleForSelect()
-    {
-        return $this->id . ') ' . $this->title;
+        return $this->aboutItems;
     }
 }
