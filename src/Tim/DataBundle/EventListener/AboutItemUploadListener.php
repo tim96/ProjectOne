@@ -22,8 +22,21 @@ class AboutItemUploadListener extends UploadListener
             return;
         }
 
+        $previousFilePath = $entity->getImagePath();
+        if (null !== $previousFilePath) {
+            $filePath = $file->getPathname();
+            // if the same file don't update data
+            if ($this->uploader->getHash($filePath) === $this->uploader->getFileHash($previousFilePath)) {
+                return ;
+            }
+        }
+
         $fileName = $this->uploader->upload($file);
         $entity->setImagePath($fileName);
+
+        if (null !== $previousFilePath) {
+            $this->uploader->remove($previousFilePath);
+        }
     }
 
     public function postLoad(LifecycleEventArgs $args)
