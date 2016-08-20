@@ -42,4 +42,9 @@ abstract class UploadListener
      * @return mixed
      */
     abstract protected function uploadFile($entity);
+
+    public function getWebFilePath($filename)
+    {
+        return $this->uploader->getWebFilePath($filename);
+    }
 }
