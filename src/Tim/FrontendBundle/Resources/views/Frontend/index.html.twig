@@ -3,7 +3,7 @@
 {% block content %}
 {% endblock content %}
 
- {% block main_slider %}
+{% block main_slider %}
      {% set borderImages = '/images/border.png' %}
      <div class="banner-slider">
          <div class="callbacks_container">
@@ -25,4 +25,18 @@
           </ul>
          </div>
      </div>
- {% endblock main_slider %}
+{% endblock main_slider %}
+
+{% block about %}
+    <div class="about" id="about">
+        <div class="container">
+            {% for i,item in aboutInfo %}
+                {% if i is odd %}
+                    {% include 'TimFrontendBundle:Frontend/templates:_about_left_template.html.twig' with {'item' : item} %}
+                {% else %}
+                    {% include 'TimFrontendBundle:Frontend/templates:_about_right_template.html.twig' with {'item' : item} %}
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock about %}
