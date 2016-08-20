@@ -9,6 +9,7 @@
 namespace Tim\DataBundle\Handler;
 
 use Doctrine\ORM\EntityManager;
+use Tim\DataBundle\EventListener\UploadListener;
 
 class AboutHandler
 {
@@ -25,11 +26,19 @@ class AboutHandler
         $this->repository = $this->om->getRepository('TimDataBundle:About');
     }
 
-    public function getAboutBlocks($limit = 2)
+    public function getAboutBlocks(UploadListener $uploadService, $limit = 2)
     {
         $abouts = $this->repository->getListQuery()->getQuery()->getArrayResult();
         if (count($abouts) > ($limit - 1)) {
-            return array_slice($abouts, 0, $limit);
+            $abouts = array_slice($abouts, 0, $limit);
         }
+
+        foreach ($abouts as $key => $item) {
+            foreach ($item['aboutItems'] as $keyInner => $itemInner) {
+                $abouts[$key]['aboutItems'][$keyInner]['fullPath'] = $uploadService->getWebFilePath($itemInner['imagePath']);
+            }
+        }
+
+        return $abouts;
     }
 }
