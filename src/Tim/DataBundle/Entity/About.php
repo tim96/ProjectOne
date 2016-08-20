@@ -14,6 +14,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class About
 {
+    const DEFAULT_ABOUT_ITEMS = 2;
+
     /**
      * @var int
      *
@@ -269,5 +271,10 @@ class About
     public function getAboutItems()
     {
         return $this->aboutItems;
+    }
+
+    public function isValidateAboutItems()
+    {
+        return count($this->aboutItems) === self::DEFAULT_ABOUT_ITEMS;
     }
 }

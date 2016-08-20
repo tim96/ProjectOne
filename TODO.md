@@ -28,8 +28,8 @@ TODO:
 - [X] Add slug url generate function to BlogRecord
 - [X] Add function to receive some info about user in ExceptionListener
 - [X] Refactoring function to save image in BlogItem (Add new private field for image)
-- [ ] Add temp entity to connect 2 AboutItems + 1 BlogRecord
-- [ ] Add validation rule what BlogRecord can have only 2 AboutItems
+- [X] Add temp entity to connect 2 AboutItems + 1 BlogRecord
+- [X] Add validation rule what BlogRecord can have only 2 AboutItems
 - [ ] Add 3 services for this entities
 - [ ] Show previous entity on main layout screen
 - [ ] Add welcome and about entity

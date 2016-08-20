@@ -7,6 +7,7 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
+use Sonata\CoreBundle\Validator\ErrorElement;
 use Tim\DataBundle\Entity\About;
 
 class AboutAdmin extends AbstractAdmin
@@ -133,5 +134,22 @@ class AboutAdmin extends AbstractAdmin
 
         $object->setUpdatedBy($user->getId());
         $object->setUpdatedAt(new \DateTime());
+    }
+
+    /**
+     * @param ErrorElement $errorElement
+     * @param About $object
+     *
+     * @throws \Exception
+     */
+    public function validate(ErrorElement $errorElement, $object)
+    {
+        if (!$object->isValidateAboutItems()) {
+            $errorElement->with('aboutItems')->addViolation('Must be two about items')->end();
+        }
+
+        if (null === $object->getBlogRecord()) {
+            $errorElement->with('aboutItems')->addViolation('Must be one blog record')->end();
+        }
     }
 }
