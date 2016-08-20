@@ -18,5 +18,7 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
     locale: en
-    about_item_directory: '%kernel.root_dir%/../web/uploads'
-    blog_record_directory: '%kernel.root_dir%/../web/uploads'
+    about_item_directory: '/uploads'
+    about_item_root_directory: '%kernel.root_dir%/../web%about_item_directory%'
+    blog_record_directory: '/uploads'
+    blog_record_root_directory: '%kernel.root_dir%/../web%blog_record_directory%'
