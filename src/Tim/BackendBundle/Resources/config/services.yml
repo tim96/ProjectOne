@@ -88,3 +88,11 @@ services:
             - { name: sonata.admin, manager_type: orm, group: 'Info', label: 'chef_label' }
         calls:
             - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
+
+    tim_backend.admin.testimonial:
+        class: Tim\BackendBundle\Admin\TestimonialAdmin
+        arguments: [~, Tim\DataBundle\Entity\Testimonial, TimBackendBundle:TestimonialAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Info', label: 'testimonial_label' }
+        calls:
+            - [ setTranslationDomain, [ 'TimBackendBundle' ] ]

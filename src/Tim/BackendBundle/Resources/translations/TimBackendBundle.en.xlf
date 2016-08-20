@@ -26,6 +26,10 @@
                 <source>chef_label</source>
                 <target>Chef</target>
             </trans-unit>
+            <trans-unit id="testimonial_label">
+                <source>testimonial_label</source>
+                <target>Testimonials</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
