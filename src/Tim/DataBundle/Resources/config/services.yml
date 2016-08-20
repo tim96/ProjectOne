@@ -3,6 +3,7 @@ parameters:
     slider_info.class: Tim\DataBundle\Handler\SliderInfoHandler
     about.class: Tim\DataBundle\Handler\AboutHandler
     chef.class: Tim\DataBundle\Handler\ChefHandler
+    testimonial.class: Tim\DataBundle\Handler\TestimonialHandler
 
 services:
 #    tim_data.example:
@@ -25,6 +26,10 @@ services:
         class: '%chef.class%'
         arguments: ['@doctrine.orm.default_entity_manager']
 
+    tim_data.testimonial_handler:
+        class: '%testimonial.class%'
+        arguments: ['@doctrine.orm.default_entity_manager']
+
     tim_data.about_item.service:
         class: Tim\DataBundle\Service\FileUploaderService
         arguments: ['%about_item_root_directory%', '%about_item_directory%']
@@ -44,6 +49,18 @@ services:
     tim_data.blog_record_upload_listener:
         class: Tim\DataBundle\EventListener\BlogRecordUploadListener
         arguments: ['@tim_data.blog_record.service']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.orm.event_listener, event: postLoad, method: postLoad }
+
+    tim_data.testimonial.service:
+        class: Tim\DataBundle\Service\FileUploaderService
+        arguments: ['%review_root_directory%', '%review_directory%']
+
+    tim_data.testimonial_upload_listener:
+        class: Tim\DataBundle\EventListener\TestimonialUploadListener
+        arguments: ['@tim_data.testimonial.service']
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
