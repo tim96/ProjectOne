@@ -2,6 +2,7 @@ parameters:
     logger_database.class: Tim\DataBundle\Handler\LoggerDatabaseHandler
     slider_info.class: Tim\DataBundle\Handler\SliderInfoHandler
     about.class: Tim\DataBundle\Handler\AboutHandler
+    chef.class: Tim\DataBundle\Handler\ChefHandler
 
 services:
 #    tim_data.example:
@@ -18,6 +19,10 @@ services:
 
     tim_data.about_handler:
         class: '%about.class%'
+        arguments: ['@doctrine.orm.default_entity_manager']
+
+    tim_data.chef_handler:
+        class: '%chef.class%'
         arguments: ['@doctrine.orm.default_entity_manager']
 
     tim_data.about_item.service:
