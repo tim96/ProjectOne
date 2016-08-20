@@ -1,0 +1,32 @@
+<div class="about-section">
+    <div class="col-md-5 ab-text two">
+        <h3 class="tittle wow slideInDown"  data-wow-duration="1s" data-wow-delay=".3s">{{ item.blogRecord.title }}</h3>
+        <div class="arrows-two wow slideInDown"  data-wow-duration="1s" data-wow-delay=".5s"><img src="/images/border.png" alt="border"/></div>
+        <p class="wow slideInUp"  data-wow-duration="1s" data-wow-delay=".3s">
+            {{ item.blogRecord.text }}
+        </p>
+        <div class="start wow flipInX"  data-wow-duration="1s" data-wow-delay=".3s">
+            <a href="single.html" class="hvr-bounce-to-bottom">{{ item.blogRecord.buttonText }}</a>
+        </div>
+    </div>
+
+    <div class="col-md-7 ab-left">
+        <div class="grid">
+            {% for j,aboutItem in item.aboutItems %}
+            <div class="h-f  wow slideInRight"  data-wow-duration="1s" data-wow-delay=".2s">
+                <figure class="effect-jazz">
+                    <img src="{{ aboutItem.fullPath }}" alt="img25"/>
+                    <figcaption>
+                        <h4>Honest <span>Food</span></h4>
+                        <p>{{ aboutItem.title }}</p>
+
+                    </figcaption>
+                </figure>
+            </div>
+            {% endfor %}
+
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+    <div class="clearfix"> </div>
+</div>
