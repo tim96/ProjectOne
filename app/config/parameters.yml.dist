@@ -23,4 +23,6 @@ parameters:
     blog_record_directory: '/uploads'
     blog_record_root_directory: '%kernel.root_dir%/../web%blog_record_directory%'
     chefs_directory: '/uploads'
-    chefs_root_directory: '%kernel.root_dir%/../web%blog_record_directory%'
+    chefs_root_directory: '%kernel.root_dir%/../web%chefs_directory%'
+    review_directory: '/uploads'
+    review_root_directory: '%kernel.root_dir%/../web%review_directory%'
