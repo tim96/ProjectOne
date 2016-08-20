@@ -1,6 +1,7 @@
 parameters:
     logger_database.class: Tim\DataBundle\Handler\LoggerDatabaseHandler
     slider_info.class: Tim\DataBundle\Handler\SliderInfoHandler
+    about.class: Tim\DataBundle\Handler\AboutHandler
 
 services:
 #    tim_data.example:
@@ -15,9 +16,13 @@ services:
         class: '%slider_info.class%'
         arguments: ['@doctrine.orm.default_entity_manager']
 
+    tim_data.about_handler:
+        class: '%about.class%'
+        arguments: ['@doctrine.orm.default_entity_manager']
+
     tim_data.about_item.service:
         class: Tim\DataBundle\Service\FileUploaderService
-        arguments: ['%about_item_directory%']
+        arguments: ['%about_item_root_directory%', '%about_item_directory%']
 
     tim_data.about_item_upload_listener:
         class: Tim\DataBundle\EventListener\AboutItemUploadListener
@@ -29,7 +34,7 @@ services:
 
     tim_data.blog_record.service:
         class: Tim\DataBundle\Service\FileUploaderService
-        arguments: ['%blog_record_directory%']
+        arguments: ['%blog_record_root_directory%', '%blog_record_directory%']
 
     tim_data.blog_record_upload_listener:
         class: Tim\DataBundle\EventListener\BlogRecordUploadListener
@@ -37,11 +42,12 @@ services:
         tags:
             - { name: doctrine.event_listener, event: prePersist }
             - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.orm.event_listener, event: postLoad, method: postLoad }
 
     tim_data.exception_listener:
         class: Tim\DataBundle\EventListener\ExceptionListener
         arguments: ['@doctrine.orm.default_entity_manager', '@security.token_storage']
         calls:
-            - [setRequest, ["@request_stack"]]
+            - [setRequest, ['@request_stack']]
         tags:
             - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }

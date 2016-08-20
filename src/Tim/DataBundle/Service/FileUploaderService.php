@@ -8,9 +8,12 @@ class FileUploaderService
 {
     protected $targetDir;
 
-    public function __construct($targetDir)
+    protected $webDir;
+
+    public function __construct($targetDir, $webDir)
     {
         $this->targetDir = $targetDir;
+        $this->webDir = $webDir;
     }
 
     public function upload(UploadedFile $file)
@@ -45,9 +48,18 @@ class FileUploaderService
         return sha1_file($filePath);
     }
 
-
     public function getTargetDir()
     {
         return $this->targetDir;
+    }
+
+    public function getWebDir()
+    {
+        return $this->webDir;
+    }
+
+    public function getWebFilePath($filename)
+    {
+        return $this->webDir . '/' . $filename;
     }
 }
