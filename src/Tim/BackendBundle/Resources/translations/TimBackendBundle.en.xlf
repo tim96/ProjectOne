@@ -22,6 +22,10 @@
                 <source>about_record_label</source>
                 <target>About Widget</target>
             </trans-unit>
+            <trans-unit id="chef_label">
+                <source>chef_label</source>
+                <target>Chef</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

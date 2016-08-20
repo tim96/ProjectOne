@@ -80,3 +80,11 @@ services:
             - { name: sonata.admin, manager_type: orm, group: 'Info', label: 'about_record_label' }
         calls:
             - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
+
+    tim_backend.admin.chef:
+        class: Tim\BackendBundle\Admin\ChefAdmin
+        arguments: [~, Tim\DataBundle\Entity\Chef, TimBackendBundle:ChefAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Info', label: 'chef_label' }
+        calls:
+            - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
