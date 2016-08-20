@@ -44,6 +44,18 @@ services:
             - { name: doctrine.event_listener, event: preUpdate }
             - { name: doctrine.orm.event_listener, event: postLoad, method: postLoad }
 
+    tim_data.chef.service:
+        class: Tim\DataBundle\Service\FileUploaderService
+        arguments: ['%chefs_root_directory%', '%chefs_directory%']
+
+    tim_data.chef_upload_listener:
+        class: Tim\DataBundle\EventListener\ChefUploadListener
+        arguments: ['@tim_data.chef.service']
+        tags:
+            - { name: doctrine.event_listener, event: prePersist }
+            - { name: doctrine.event_listener, event: preUpdate }
+            - { name: doctrine.orm.event_listener, event: postLoad, method: postLoad }
+
     tim_data.exception_listener:
         class: Tim\DataBundle\EventListener\ExceptionListener
         arguments: ['@doctrine.orm.default_entity_manager', '@security.token_storage']
