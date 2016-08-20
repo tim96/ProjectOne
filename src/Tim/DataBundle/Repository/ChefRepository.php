@@ -12,4 +12,29 @@ use Doctrine\ORM\EntityRepository;
  */
 class ChefRepository extends EntityRepository
 {
+    public function getListQuery($limit = null)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        if (null !== $limit && $limit > 0) {
+            $qb->setMaxResults((int)$limit);
+        }
+
+        $qb->orderBy('c.updatedAt', 'ASC');
+
+        return $qb;
+    }
+
+    public function getByIdQuery($id)
+    {
+        $qb = $this->createQueryBuilder('c');
+
+        $qb->andWhere('c.id', ':id')
+            ->setParameter('id', (int)$id)
+        ;
+
+        $qb->setMaxResults(1);
+
+        return $qb;
+    }
 }
