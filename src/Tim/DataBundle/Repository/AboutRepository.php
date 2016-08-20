@@ -12,4 +12,18 @@ use Doctrine\ORM\EntityRepository;
  */
 class AboutRepository extends EntityRepository
 {
+    public function getListQuery()
+    {
+        $qb = $this->createQueryBuilder('a');
+
+        $qb->leftJoin('a.aboutItems', 'aboutItems')
+            ->addSelect('aboutItems')
+            ->leftJoin('a.blogRecord', 'blogRecord')
+            ->addSelect('blogRecord')
+        ;
+
+        $qb->orderBy('a.updatedAt', 'ASC');
+
+        return $qb;
+    }
 }
