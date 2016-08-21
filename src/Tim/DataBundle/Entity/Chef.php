@@ -126,6 +126,7 @@ class Chef
         $this->createdAt = new \DateTime();
         $this->updatedAt = new \DateTime();
         $this->isActive = false;
+        $this->isPublishOnMainPage = false;
         $this->author = 0;
         $this->updatedBy = null;
     }
