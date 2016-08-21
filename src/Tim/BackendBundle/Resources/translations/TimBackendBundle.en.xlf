@@ -30,6 +30,10 @@
                 <source>testimonial_label</source>
                 <target>Testimonials</target>
             </trans-unit>
+            <trans-unit id="reservation_label">
+                <source>reservation_label</source>
+                <target>Reservation</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
