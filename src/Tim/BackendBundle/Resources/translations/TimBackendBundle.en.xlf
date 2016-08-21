@@ -38,6 +38,10 @@
                 <source>feedback_label</source>
                 <target>Feedback</target>
             </trans-unit>
+            <trans-unit id="company_info_label">
+                <source>company_info_label</source>
+                <target>Company Info</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

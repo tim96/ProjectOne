@@ -112,3 +112,11 @@ services:
             - { name: sonata.admin, manager_type: orm, group: 'Restaurant', label: 'feedback_label' }
         calls:
             - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
+
+    tim_backend.admin.company_info:
+        class: Tim\BackendBundle\Admin\CompanyInfoAdmin
+        arguments: [~, Tim\DataBundle\Entity\CompanyInfo, TimBackendBundle:CompanyInfoAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: 'Restaurant', label: 'company_info_label' }
+        calls:
+            - [ setTranslationDomain, [ 'TimBackendBundle' ] ]
