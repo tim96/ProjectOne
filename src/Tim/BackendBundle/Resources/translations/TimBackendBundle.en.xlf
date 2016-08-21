@@ -34,6 +34,10 @@
                 <source>reservation_label</source>
                 <target>Reservation</target>
             </trans-unit>
+            <trans-unit id="feedback_label">
+                <source>feedback_label</source>
+                <target>Feedback</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
