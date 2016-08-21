@@ -124,7 +124,22 @@ gulp.task('images', function () {
         .pipe(gulp.dest('web/images'));
 });
 
+gulp.task('datetimepicker_css', function () {
+    return gulp.src([
+        'bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+    ])
+    .pipe(gulp.dest('web/css'));
+});
+
+gulp.task('datetimepicker_js', function () {
+    return gulp.src([
+        'bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+        'bower_components/moment/min/moment.min.js',
+    ])
+    .pipe(gulp.dest('web/js'));
+});
+
 //define executable tasks when running "gulp" command
 gulp.task('default', ['js', 'custom_js', 'css', 'custom_css', 'fonts', 'chart.js', 'symfony-collection.js',
-    'custom_js1', 'custom_js2', 'images'
+    'custom_js1', 'custom_js2', 'images', 'datetimepicker_css', 'datetimepicker_js'
 ]);
