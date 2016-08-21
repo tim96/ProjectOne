@@ -139,3 +139,100 @@
         <div class="clearfix"> </div>
     </div>
 {% endblock review %}
+
+{% block reservatation %}
+    <div class="reservation" id="reservation">
+        <div class="container">
+            <div class="reservation-info">
+                <h3 class="tittle reserve">Make a <br>
+                    Reservation</h3>
+                <div class="arrows-reserve"><img src="/images/border.png" alt="border"></div>
+
+                <div class="book-reservation wow slideInUp" data-wow-duration="1s" data-wow-delay=".5s">
+                    <form id="reservation_form" name="reservation_form">
+                        <div class="col-md-4 form-left">
+                            <label><i class="glyphicon glyphicon-calendar"></i>DateTime :</label>
+                            <input type="datetime" required="required" name="dateReservation" id="dateReservation">
+                        </div>
+                        <div class="col-md-4 form-left">
+                            <label><i class="glyphicon glyphicon-earphone"></i>Cont (Email/Phone):</label>
+                            <input type="text" required="required" name="contactData" id="contactData">
+                        </div>
+                        <div class="col-md-4 form-left">
+                            <label><i class="glyphicon glyphicon-user"></i>No.of People :</label>
+                            <select name="countCustomers" class="form-control">
+                                <option value="1">1 Person</option>
+                                <option value="2">2 People</option>
+                                <option value="3">3 People</option>
+                                <option value="4">4 People</option>
+                                <option value="5">5 People</option>
+                                <option value="999">More</option>
+                            </select>
+                        </div>
+                        {#<div class="col-md-4 form-right">#}
+                            {#<label><i class="glyphicon glyphicon-time"></i> Time :</label>#}
+                            {#<input type="time">#}
+                        {#</div>#}
+                        <div class="clearfix"> </div>
+                        <div class="make wow shake" data-wow-duration="1s" data-wow-delay=".5s">
+                            <input type="submit" value="Make a Reservation">
+                        </div>
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
+        </div>
+    </div>
+{% endblock reservatation %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <link rel="stylesheet" href="/css/bootstrap-datetimepicker.min.css" />
+{% endblock stylesheets %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script type="text/javascript" src="/js/moment.min.js"></script>
+    <script type="text/javascript" src="/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            $('#dateReservation').datetimepicker({
+                format : 'DD/MM/YYYY HH:mm'
+            });
+
+            $('#reservation_form').submit(function(e) {
+                e.preventDefault();
+
+                var url = '{{ path('tim_frontend_reservation') }}';
+                var data = $("#reservation_form").serialize();
+
+                $.ajax({
+                    type: 'POST',
+                    url: url,
+                    data: data,
+                    dataType : 'json',
+                    success: function(data) {
+                        // console.log('Success');
+                        // console.log('Data', data);
+
+                        // clear form
+                        $('#reservation_form')[0].reset();
+
+                        // todo: add bootstrap modal popup to show thank you
+                        alert(data.message);
+                    },
+                    error: function(data) {
+                        // console.log('Error');
+                        console.log('Data', data);
+
+                        // todo: add bootstrap modal popup to show error
+                        alert(data.message);
+                    }
+                });
+            });
+        });
+    </script>
+{% endblock javascripts %}
