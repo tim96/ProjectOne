@@ -1246,7 +1246,7 @@ h3.tittle.reserve {
 	color: #EFA52C;
 
 }
-.book-reservation input[type="text"],.book-reservation input[type="date"],.book-reservation input[type="time"] {
+.book-reservation input[type="text"],.book-reservation input[type="date"],.book-reservation input[type="datetime"],.book-reservation input[type="time"] {
     width: 100%;
     color:#EFA52C;
     outline: none;
