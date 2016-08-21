@@ -57,3 +57,7 @@ php app/console sonata:admin:generate Tim\DataBundle\Entity\IpAddress
 17. Install two versions of the same library:
 bower install jquery-legacy=jquery#1 jquery-modern=jquery#2 jquery-new=jquery#3
 bower install select2-prev=select2#3 select2-current=select2#4
+
+18. Install bootstrap datetime picker
+bower install eonasdan-bootstrap-datetimepicker#latest --save
+
