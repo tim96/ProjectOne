@@ -1,3 +1,7 @@
 tim_frontend:
     path:     /
     defaults: { _controller: TimFrontendBundle:Frontend:index }
+
+tim_frontend_reservation:
+    path:     /reservation
+    defaults: { _controller: TimFrontendBundle:Frontend:reservation }

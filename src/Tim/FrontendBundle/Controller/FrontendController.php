@@ -9,6 +9,11 @@
 namespace Tim\FrontendBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Form;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Tim\DataBundle\Entity\Reservation;
+use Tim\DataBundle\Form\ReservationType;
 
 class FrontendController extends Controller
 {
@@ -35,5 +40,60 @@ class FrontendController extends Controller
             'chefs' => $chefs,
             'testimonials' => $testimonials,
         ));
+    }
+
+    public function reservationAction(Request $request)
+    {
+        $reservation = new Reservation();
+        $form = $this->createForm(new ReservationType(), $reservation);
+
+        // for ajax using submit. But submit request data only
+        // $form->submit($request);
+        $form->submit($request->request->all());
+        // overwise using handleRequest
+        // $form->handleRequest($request);
+
+        if ($form->isValid()) {
+            try {
+                $em = $this->getDoctrine()->getManager();
+
+                $em->persist($reservation);
+                $em->flush();
+
+                return new Response(json_encode(array('status' => true, 'message' => 'thank_you_message')));
+            }
+            catch(\Exception $ex)
+            {
+                // todo: add function to save error in database
+
+                return new Response(json_encode(array('status' => false, 'message' => 'fatal_error_message')), 500);
+            }
+
+            // todo: send email to manager
+        }
+
+        return new Response(json_encode(array('status' => false, 'message' => 'error_message',
+            'data' => $this->getErrorMessages($form))), 500);
+    }
+
+    protected function getErrorMessages(Form $form)
+    {
+        $errors = array();
+
+        foreach ($form->getErrors() as $error) {
+            if ($form->isRoot()) {
+                $errors['#'][] = $error->getMessage();
+            } else {
+                $errors[] = $error->getMessage();
+            }
+        }
+
+        foreach ($form->all() as $child) {
+            if (!$child->isValid()) {
+                $errors[$child->getName()] = $this->getErrorMessages($child);
+            }
+        }
+
+        return $errors;
     }
 }
