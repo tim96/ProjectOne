@@ -12,7 +12,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Tim\DataBundle\Entity\Feedback;
 use Tim\DataBundle\Entity\Reservation;
+use Tim\DataBundle\Form\FeedbackType;
 use Tim\DataBundle\Form\ReservationType;
 
 class FrontendController extends Controller
@@ -70,6 +72,35 @@ class FrontendController extends Controller
             }
 
             // todo: send email to manager
+        }
+
+        return new Response(json_encode(array('status' => false, 'message' => 'error_message',
+            'data' => $this->getErrorMessages($form))), 500);
+    }
+
+    public function feedbackAction(Request $request)
+    {
+        $feedback = new Feedback();
+        $form = $this->createForm(new FeedbackType(), $feedback);
+
+        $form->submit($request->request->all());
+        if ($form->isValid()) {
+            try {
+                $em = $this->getDoctrine()->getManager();
+
+                $em->persist($feedback);
+                $em->flush();
+
+                return new Response(json_encode(array('status' => true, 'message' => 'thank_you_message')));
+            }
+            catch(\Exception $ex)
+            {
+                // todo: add function to save error in database
+
+                return new Response(json_encode(array('status' => false, 'message' => 'fatal_error_message')), 500);
+            }
+
+            // todo: send email to manager about new feedback message
         }
 
         return new Response(json_encode(array('status' => false, 'message' => 'error_message',

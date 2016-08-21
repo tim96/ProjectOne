@@ -134,6 +134,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
             });
         </script>
+
+        <!--start-smooth-scrolling-->
+        <script type="text/javascript">
+            $(document).ready(function() {
+                /*
+                 var defaults = {
+                 containerID: 'toTop', // fading element id
+                 containerHoverID: 'toTopHover', // fading element hover id
+                 scrollSpeed: 1200,
+                 easingType: 'linear'
+                 };
+                 */
+
+                $().UItoTop({ easingType: 'easeOutQuart' });
+
+            });
+        </script>
+        <!--end-smooth-scrolling-->
     {% endblock javascripts %}
 </head>
 <body>
@@ -658,20 +676,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //gallery -->
 
 <!--bottom-->
-<div class="bottom">
-    <div class="container">
-        <div class="bottom-top">
-            <h3 class=" wow flipInX"  data-wow-duration="1s" data-wow-delay=".3s">We Are Sharing</h3>
-            <span>DELICIOUS TREATS</span>
-            <p class="wow slideInDown" data-wow-duration="1s" data-wow-delay=".5s">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            <div class="start wow flipInX"  data-wow-duration="1s" data-wow-delay=".3s">
-                <a href="single.html" class="hvr-bounce-to-bottom">Read More</a>
-            </div>
-        </div>
-    </div>
-</div>
+{% block blog_popular %}
+{#<div class="bottom">#}
+    {#<div class="container">#}
+        {#<div class="bottom-top">#}
+            {#<h3 class=" wow flipInX"  data-wow-duration="1s" data-wow-delay=".3s">We Are Sharing</h3>#}
+            {#<span>DELICIOUS TREATS</span>#}
+            {#<p class="wow slideInDown" data-wow-duration="1s" data-wow-delay=".5s">Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum has been the industry's standard dummy text ever since, Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>#}
+            {#<div class="start wow flipInX"  data-wow-duration="1s" data-wow-delay=".3s">#}
+                {#<a href="single.html" class="hvr-bounce-to-bottom">Read More</a>#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
+{#</div>#}
+{% endblock blog_popular %}
 
 <!--/contact-->
+{% block contact %}
 <div class="section-contact" id="contact">
     <div class="container">
         <div class="contact-main">
@@ -699,7 +720,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     </div>
 
                     <div class="field msg-box">
-                        <textarea id="msg" rows="4" placeholder="Your message goes here..." required=""/ ></textarea>
+                        <textarea id="msg" rows="4" placeholder="Your message goes here..." required="" /></textarea>
                         <label for="msg">Message</label>
                         <span class="ss-icon">check</span>
                     </div>
@@ -742,23 +763,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <div class="clearfix"> </div>
         </div>
         <!--map-->
-        <div class="map wow fadeInDown" data-wow-duration=".8s" data-wow-delay=".5s">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1675115.8258740564!2d-98.4671417929578!3d34.91371150021706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sin!4v1434956093308"></iframe>
-        </div>
+        {#<div class="map wow fadeInDown" data-wow-duration=".8s" data-wow-delay=".5s">#}
+            {#<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1675115.8258740564!2d-98.4671417929578!3d34.91371150021706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sin!4v1434956093308"></iframe>#}
+        {#</div>#}
         <!--//map-->
     </div>
 </div>
+{% endblock contact %}
 <!--//contact-->
+
 <!--footer-->
 <div class="footer text-center">
     <div class="container">
         <!--logo2-->
         <div class="logo2 wow fadeInUp" data-wow-duration="1s" data-wow-delay=".3s">
-            <a href="index.html"><h2>H<span>onest Food</span></h2></a>
+            <a href="{{ path('tim_frontend') }}"><h2>H<span>onest Food</span></h2></a>
             <p>The Real taste</p>
         </div>
         <!--//logo2-->
-        <a href="single.html" class="flag_tag2">Where to find us?</a>
+        <a href="#home" class="flag_tag2">Where to find us?</a>
         <ul class="social wow slideInDown" data-wow-duration="1s" data-wow-delay=".3s">
             <li><a href="#" class="tw"></a></li>
             <li><a href="#" class="fb"> </a></li>
@@ -766,27 +789,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             <li><a href="#" class="dott"></a></li>
             <div class="clearfix"></div>
         </ul>
-        <p class="copy-right wow fadeInUp"  data-wow-duration="1s" data-wow-delay=".3s">&copy; 2016 Honest Food. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a></p>
-
+        <p class="copy-right wow fadeInUp"  data-wow-duration="1s" data-wow-delay=".3s">
+            &copy; 2016 Honest Food. All rights reserved | Design by <a href="http://w3layouts.com">W3layouts</a>
+        </p>
     </div>
 </div>
-<!--start-smooth-scrolling-->
-<script type="text/javascript">
-    $(document).ready(function() {
-        /*
-         var defaults = {
-         containerID: 'toTop', // fading element id
-         containerHoverID: 'toTopHover', // fading element hover id
-         scrollSpeed: 1200,
-         easingType: 'linear'
-         };
-         */
 
-        $().UItoTop({ easingType: 'easeOutQuart' });
-
-    });
-</script>
-<!--end-smooth-scrolling-->
 <a href="#home" id="toTop" class="scroll" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 {% endblock main_content %}
 

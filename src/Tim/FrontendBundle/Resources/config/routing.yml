@@ -5,3 +5,7 @@ tim_frontend:
 tim_frontend_reservation:
     path:     /reservation
     defaults: { _controller: TimFrontendBundle:Frontend:reservation }
+
+tim_frontend_feedback:
+    path:     /feedback
+    defaults: { _controller: TimFrontendBundle:Frontend:feedback }

@@ -185,6 +185,87 @@
     </div>
 {% endblock reservatation %}
 
+{% block contact %}
+    <div class="section-contact" id="contact">
+        <div class="container">
+            <div class="contact-main">
+                <div class="col-md-6 contact-grid wow fadeInUp"  data-wow-duration="1s" data-wow-delay=".3s">
+                    <h3 class="tittle wow bounceIn"  data-wow-duration=".8s" data-wow-delay=".2s">Contact Us</h3>
+                    <div class="arrows-three"><img src="/images/border.png" alt="border"></div>
+                    <p class="wel-text wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".4s">
+                        Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus
+                        id quod maxime placeat facere possimus omnis optio cumque nihil impedit quo minus id
+                        quod maxime placeat facere possimus.
+                    </p>
+                    <form id="filldetails" name="contact_form">
+                        <div class="field name-box">
+                            <input type="text" id="name" placeholder="Who Are You?" name="nameCustomer" required="required" />
+                            <label for="name">Name</label>
+                            <span class="ss-icon">check</span>
+                        </div>
+
+                        <div class="field email-box">
+                            <input type="text" id="email" placeholder="example@email.com" name="email" required="required" />
+                            <label for="email">Email</label>
+                            <span class="ss-icon">check</span>
+                        </div>
+
+                        <div class="field phonenum-box">
+                            <input type="text" id="email" placeholder="Phone Number" name="phoneCustomer" />
+                            <label for="email">Phone</label>
+                            <span class="ss-icon">check</span>
+                        </div>
+
+                        <div class="field name-box">
+                            <input id="name" type="text" placeholder="Your message goes here..." name="text" required="required" />
+                            <label for="msg">Message</label>
+                            <span class="ss-icon">check</span>
+                        </div>
+                        <div class="send wow shake"  data-wow-duration="1s" data-wow-delay=".3s">
+                            <input type="submit" value="Send" >
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-6 contact-in wow fadeInUp"  data-wow-duration="1s" data-wow-delay=".5s">
+                    <h4 class="info">Our Info </h4>
+                    <p class="para1">Lorem ipsum dolor sit amet. Ut enim ad minim veniam.Sunt in culpa qui officia deserunt mollit anim id est laborum.Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature. </p>
+                    <div class="con-top">
+                        <h4>Alaska</h4>
+                        <ul>
+                            <li>4th Floor dolor sit amet,</li>
+                            <li># Grand Hyatt New York Road,</li>
+                            <li>Opp. adipiscing elit,</li>
+                            <li>Alaska - 99501</li>
+                            <li>Ph:4568956555 </li>
+                            <li>Call Centre Time : 7am to 11pm</li>
+                            <li><a href="mailto:info@example.com">mail@example.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="con-top two">
+                        <h4>Hawaii</h4>
+                        <ul>
+                            <li>4th Floor dolor sit amet,</li>
+                            <li># Grand Hyatt New York Road,</li>
+                            <li>Opp. adipiscing elit,</li>
+                            <li>Hawaii - 96815</li>
+                            <li>Ph:3698521475 </li>
+                            <li>Call Centre Time : 7am to 11pm</li>
+                            <li><a href="mailto:info@example.com">mail@example.com</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="clearfix"> </div>
+            </div>
+            <!--map-->
+            {#<div class="map wow fadeInDown" data-wow-duration=".8s" data-wow-delay=".5s">#}
+            {#<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1675115.8258740564!2d-98.4671417929578!3d34.91371150021706!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x54eab584e432360b%3A0x1c3bb99243deb742!2sUnited+States!5e0!3m2!1sen!2sin!4v1434956093308"></iframe>#}
+            {#</div>#}
+            <!--//map-->
+        </div>
+    </div>
+{% endblock contact %}
+
 {% block stylesheets %}
     {{ parent() }}
 
@@ -203,36 +284,45 @@
                 format : 'DD/MM/YYYY HH:mm'
             });
 
-            $('#reservation_form').submit(function(e) {
-                e.preventDefault();
+            var reservationForm = $('#reservation_form');
+            var reservationUrl = '{{ path('tim_frontend_reservation') }}';
+            sendForm(reservationForm, reservationUrl);
 
-                var url = '{{ path('tim_frontend_reservation') }}';
-                var data = $("#reservation_form").serialize();
+            var feedbackForm = $('#filldetails');
+            var feedbackUrl = '{{ path('tim_frontend_feedback') }}';
+            sendForm(feedbackForm, feedbackUrl);
 
-                $.ajax({
-                    type: 'POST',
-                    url: url,
-                    data: data,
-                    dataType : 'json',
-                    success: function(data) {
-                        // console.log('Success');
-                        // console.log('Data', data);
+            function sendForm(form, url) {
+                form.submit(function (e) {
+                    e.preventDefault();
 
-                        // clear form
-                        $('#reservation_form')[0].reset();
+                    var data = form.serialize();
 
-                        // todo: add bootstrap modal popup to show thank you
-                        alert(data.message);
-                    },
-                    error: function(data) {
-                        // console.log('Error');
-                        console.log('Data', data);
+                    $.ajax({
+                        type: 'POST',
+                        url: url,
+                        data: data,
+                        dataType: 'json',
+                        success: function (data) {
+                            // console.log('Success');
+                            // console.log('Data', data);
 
-                        // todo: add bootstrap modal popup to show error
-                        alert(data.message);
-                    }
+                            // clear form
+                            form[0].reset();
+
+                            // todo: add bootstrap modal popup to show thank you
+                            alert(data.message);
+                        },
+                        error: function (data) {
+                            // console.log('Error');
+                            // console.log('Data', data);
+
+                            // todo: add bootstrap modal popup to show error
+                            alert(data.message);
+                        }
+                    });
                 });
-            });
+            }
         });
     </script>
 {% endblock javascripts %}
